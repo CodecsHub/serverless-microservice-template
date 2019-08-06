@@ -13,9 +13,9 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
 
         public ActivityRepository()
         {
-                
+
         }
-       
+
         public Task AddAsync(Activity product)
         {
             throw new NotImplementedException();
