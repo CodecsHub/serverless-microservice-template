@@ -9,9 +9,9 @@ using ServerlessMicroservice.Infrastructure.Interfaces;
 
 namespace ServerlessMicroservice.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ActivityController : ControllerBase
+
+
+    public class ActivityController : V1Controller
     {
         private readonly IActivityService _activityService;
 

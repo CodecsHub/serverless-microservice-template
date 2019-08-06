@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ServerlessMicroservice.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public abstract class V1Controller : ControllerBase
     {
