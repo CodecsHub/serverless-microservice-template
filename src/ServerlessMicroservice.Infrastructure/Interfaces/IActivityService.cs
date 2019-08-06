@@ -1,4 +1,5 @@
 ﻿using ServerlessMicroservice.Domain.Entities;
+using ServerlessMicroservice.Infrastructure.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,8 +9,9 @@ namespace ServerlessMicroservice.Infrastructure.Interfaces
 {
     public interface IActivityService
     {
-        Task <Activity> GetByIdAsync(long id);
-        Task <IEnumerable<Activity>> GetAllAsync();
-        Task AddAsync(Activity product);
+        Task<ActivityResponse> GetAsync(long id);
+        Task<ActivityResponse> GetAllAsync();
+        Task AddAsync(ActivityRequest productRequest);
+
     }
 }
