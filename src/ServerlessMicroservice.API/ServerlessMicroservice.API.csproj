@@ -5,11 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="API\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServerlessMicroservice.Domain\ServerlessMicroservice.Domain.csproj" />
+    <ProjectReference Include="..\ServerlessMicroservice.Infrastructure\ServerlessMicroservice.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

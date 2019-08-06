@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ServerlessMicroservice.Infrastructure.Interfaces;
+using ServerlessMicroservice.Infrastructure.Repositories;
+using ServerlessMicroservice.Infrastructure.Services;
 
 namespace ServerlessMicroservice.API
 {
@@ -72,6 +75,10 @@ namespace ServerlessMicroservice.API
                 //@referrence: https://code-maze.com/content-negotiation-dotnet-core/
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // Add application services.
+            services.AddTransient<IActivityService, ActivityService>();
+            services.AddTransient<IActivityRepository, ActivityRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
