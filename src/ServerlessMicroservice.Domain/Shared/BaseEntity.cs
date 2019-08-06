@@ -5,7 +5,7 @@ using System.Text;
 namespace ServerlessMicroservice.Domain.Shared
 {
     /// <summary>
-    /// The generic class use to data look up list
+    /// The generic class use to data look up list 
     /// to all other classe entity/model of the class.
     /// </summary>
     public abstract class BaseEntity
@@ -16,7 +16,6 @@ namespace ServerlessMicroservice.Domain.Shared
 
         public Int64 Id { get; set; }
         public int RowVersionNumber { get; set; }
-        public bool IsActive { get; set; }
         public DateTime DateTimeLog { get; protected set; } = DateTime.UtcNow;
 
         public DateTime DateCreated
