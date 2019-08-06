@@ -27,7 +27,8 @@ namespace ServerlessMicroservice.Infrastructure.Services
                 ApplicationId = activityRequest.ApplicationId,
                 ActionId = activityRequest.ActionId,
                 ApplicationUrl = activityRequest.ApplicationUrl,
-                //DateTimeLog = activityRequest.DateTimeLog,
+                // @todo: fix date time log entry, by default right now, it will save base on application
+               // DateTimeLog = activityRequest.DateTimeLog,
                 ActivityRemarks = activityRequest.ActivityRemarks
             };
 
