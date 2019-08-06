@@ -86,6 +86,7 @@ namespace ServerlessMicroservice.API
             // Additionally, it serves as a reason to keep the names matching
             // @url: https://davidpine.net/blog/asp-net-core-configuration/
             services.Configure<ApplicationInformation>(_configuration.GetSection(nameof(ApplicationInformation)));
+            services.Configure<ConnectionStrings>(_configuration.GetSection(nameof(ConnectionStrings)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
