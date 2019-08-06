@@ -12,5 +12,8 @@ namespace ServerlessMicroservice.Domain.Entities
         public int ActionId { get; set; }
         public string ApplicationUrl { get; set; }
         public string ActivityRemarks { get; set; }
+
+        // this is for look up entity code whenever pointing to one to many class/relationship
+        //public IList<Product> Products { get; set; } = new List<Product>();
     }
 }
