@@ -33,6 +33,7 @@ namespace ServerlessMicroservice.Infrastructure.Services
             };
 
             await _activityRepository.AddAsync(activity);
+
         }
 
         public async Task<ActivityResponse> GetAllAsync()

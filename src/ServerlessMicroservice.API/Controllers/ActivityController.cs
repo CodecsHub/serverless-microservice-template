@@ -22,24 +22,27 @@ namespace ServerlessMicroservice.API.Controllers
 
         // GET api/v1/products/{id}
         [HttpGet("{id}")]
-        public async Task<ActivityResponse> Get(long id)
+        public async Task<ActionResult<ActivityResponse>> Get(long id)
         {
-            return await _activityService.GetAsync(id);
+            var output = await _activityService.GetAsync(id);
+            return Ok(output);
         }
 
         // GET api/v1/products
         [HttpGet]
-        public async Task<ActivityResponse> Get()
+        public async Task<ActionResult<ActivityResponse>> Get()
         {
-            return await _activityService.GetAllAsync();
+            var output = await _activityService.GetAllAsync();
+            return Ok(output);
         }
 
         // POST api/v1/products
         [ProducesResponseType(201)]
         [HttpPost]
-        public async Task Post([FromBody]ActivityRequest productRequest)
+        public async Task Post([FromBody]ActivityRequest activityRequest)
         {
-            await _activityService.AddAsync(productRequest);
+            await _activityService.AddAsync(activityRequest);
+
         }
     }
 }
