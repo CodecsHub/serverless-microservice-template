@@ -1,7 +1,10 @@
-﻿using ServerlessMicroservice.Domain.Entities;
+﻿using Dapper;
+using ServerlessMicroservice.Domain.Entities;
 using ServerlessMicroservice.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,16 +12,25 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
 {
     public class ActivityRepository : IActivityRepository
     {
-        //private IDbConnection _connection { get { return new SqlConnection(_connectionString); } }
+        private readonly string _connectionString;
+        private IDbConnection _connection { get { return new SqlConnection(_connectionString); } }
 
         public ActivityRepository()
         {
-
+            // _connectionString = "Server=DESKTOP-85SV1TI\\SQLEXPRESS;Database=RESTfulSampleDb;Trusted_Connection=True;MultipleActiveResultSets=true";
+            _connectionString = "Server=FABAYON;Database=TitleMicroservice0000TemplateDatabase;Trusted_Connection=True;";
         }
 
-        public Task AddAsync(Activity product)
+        public async Task AddAsync(Activity activity)
         {
-            throw new NotImplementedException();
+            using (IDbConnection dbConnection = _connection)
+            {
+                string query = "EXEC V1Activity_Post @UserId, @ApplicationId, @ActionId" +
+                     ", @ApplicationUrl, @ActivityRemarks, @DateTimeLog";
+
+                await dbConnection.ExecuteAsync(query, activity);
+            }
+
         }
 
         public Task<IEnumerable<Activity>> GetAllAsync()
