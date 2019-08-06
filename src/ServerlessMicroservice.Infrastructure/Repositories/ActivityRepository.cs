@@ -33,9 +33,16 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
 
         }
 
-        public Task<IEnumerable<Activity>> GetAllAsync()
+        public async Task<IEnumerable<Activity>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            //TODO: Paging...
+            using (IDbConnection dbConnection = _connection)
+            {
+                string query = "SELECT * FROM Activity";
+                var output = await dbConnection.QueryAsync<Activity>(query);
+
+                return output;
+            }
         }
 
         public Task<Activity> GetByIdAsync(long id)

@@ -11,5 +11,6 @@ namespace ServerlessMicroservice.Infrastructure.Contracts
         public int ActionId { get; set; }
         public string ApplicationUrl { get; set; }
         public string ActivityRemarks { get; set; }
+        public DateTime DateTimeLog { get; set; }
     }
 }
