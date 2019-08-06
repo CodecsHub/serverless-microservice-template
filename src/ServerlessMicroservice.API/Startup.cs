@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ServerlessMicroservice.API.Utilities;
 using ServerlessMicroservice.Infrastructure.Interfaces;
 using ServerlessMicroservice.Infrastructure.Repositories;
 using ServerlessMicroservice.Infrastructure.Services;
@@ -79,6 +80,12 @@ namespace ServerlessMicroservice.API
             // Add application services.
             services.AddTransient<IActivityService, ActivityService>();
             services.AddTransient<IActivityRepository, ActivityRepository>();
+
+
+            // <c>nameof<c> operator. This assumes that the the section in the JSON file matches the name of the class object representing it.
+            // Additionally, it serves as a reason to keep the names matching
+            // @url: https://davidpine.net/blog/asp-net-core-configuration/
+            services.Configure<ApplicationInformation>(_configuration.GetSection(nameof(ApplicationInformation)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -90,7 +97,7 @@ namespace ServerlessMicroservice.API
             }
             else
             {
-                // The default HSTS value is 30 days. 
+                // The default HSTS value is 30 days.
                 //You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
