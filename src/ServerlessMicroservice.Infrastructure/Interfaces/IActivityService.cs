@@ -11,7 +11,7 @@ namespace ServerlessMicroservice.Infrastructure.Interfaces
     {
         Task<ActivityResponse> GetAsync(long id);
         Task<ActivityResponse> GetAllAsync();
-        Task AddAsync(ActivityRequest productRequest);
+        Task AddAsync(ActivityRequest activityRequest);
 
     }
 }

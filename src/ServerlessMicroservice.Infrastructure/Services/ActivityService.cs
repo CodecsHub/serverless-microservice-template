@@ -3,6 +3,7 @@ using ServerlessMicroservice.Infrastructure.Contracts;
 using ServerlessMicroservice.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,24 +14,58 @@ namespace ServerlessMicroservice.Infrastructure.Services
 
         private readonly IActivityRepository _activityRepository;
 
-        public ActivityService()
+        public ActivityService(IActivityRepository activityRepository)
         {
-
+            _activityRepository = activityRepository;
         }
 
-        public Task AddAsync(ActivityRequest productRequest)
+        public async Task AddAsync(ActivityRequest activityRequest)
         {
-            throw new NotImplementedException();
+            Activity activity = new Activity()
+            {
+                UserId = activityRequest.UserId,
+                ApplicationId = activityRequest.ApplicationId,
+                ActionId = activityRequest.ActionId,
+                ApplicationUrl = activityRequest.ApplicationUrl,
+                //DateTimeLog = activityRequest.DateTimeLog,
+                ActivityRemarks = activityRequest.ActivityRemarks
+            };
+
+            await _activityRepository.AddAsync(activity);
         }
 
-        public Task<ActivityResponse> GetAllAsync()
+        public async Task<ActivityResponse> GetAllAsync()
         {
-            throw new NotImplementedException();
+            ActivityResponse activityResponse = new ActivityResponse();
+            IEnumerable<Activity> activity = await _activityRepository.GetAllAsync();
+
+            if (activity.ToList().Count == 0)
+            {
+                activityResponse.Message = "Activities not found.";
+            }
+            else
+            {
+                activityResponse.Activities.AddRange(activity);
+            }
+
+            return activityResponse;
         }
 
-        public Task<ActivityResponse> GetAsync(long id)
+        public async Task<ActivityResponse> GetAsync(long id)
         {
-            throw new NotImplementedException();
+            ActivityResponse activityResponse = new ActivityResponse();
+            var activity = await _activityRepository.GetByIdAsync(id);
+
+            if (activity == null)
+            {
+                activityResponse.Message = "Activity not found.";
+            }
+            else
+            {
+                activityResponse.Activities.Add(activity);
+            }
+
+            return activityResponse;
         }
     }
 }

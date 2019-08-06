@@ -5,7 +5,7 @@ using System.Text;
 namespace ServerlessMicroservice.Domain.Shared
 {
     /// <summary>
-    /// The generic class use to data look up list 
+    /// The generic class use to data look up list
     /// to all other classe entity/model of the class.
     /// </summary>
     public abstract class BaseEntity
