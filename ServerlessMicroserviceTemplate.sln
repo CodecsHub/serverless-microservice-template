@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessMicroservice.Doma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerlessMicroservice.Infrastructure", "src\ServerlessMicroservice.Infrastructure\ServerlessMicroservice.Infrastructure.csproj", "{A8060E30-8D4C-4A36-9B9E-8B98B977437E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerlessMicroservice.API", "src\ServerlessMicroservice.API\ServerlessMicroservice.API.csproj", "{CC94724D-CE02-4B37-BA03-8218FED2E951}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A8060E30-8D4C-4A36-9B9E-8B98B977437E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8060E30-8D4C-4A36-9B9E-8B98B977437E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8060E30-8D4C-4A36-9B9E-8B98B977437E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC94724D-CE02-4B37-BA03-8218FED2E951}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC94724D-CE02-4B37-BA03-8218FED2E951}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC94724D-CE02-4B37-BA03-8218FED2E951}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC94724D-CE02-4B37-BA03-8218FED2E951}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
