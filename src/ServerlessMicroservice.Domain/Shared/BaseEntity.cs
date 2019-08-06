@@ -10,8 +10,6 @@ namespace ServerlessMicroservice.Domain.Shared
     /// </summary>
     public abstract class BaseEntity
     {
-        private DateTime _dateCreated;
-        private DateTime _dateUpdated;
 
 
         public Int64 Id { get; set; }
@@ -20,14 +18,12 @@ namespace ServerlessMicroservice.Domain.Shared
 
         public DateTime DateCreated
         {
-            get => _dateCreated;
-            set => _dateCreated = DateTimeLog;
+            get; set;
         }
 
         public DateTime DateUpdated
         {
-            get => _dateUpdated;
-            set => _dateUpdated = DateTimeLog;
+            get; set;
         }
     }
 }
