@@ -21,6 +21,7 @@ namespace ServerlessMicroservice.Infrastructure.Services
 
         public async Task AddAsync(ActivityRequest activityRequest)
         {
+            ActivityResponse activityResponse = new ActivityResponse();
             Activity activity = new Activity()
             {
                 UserId = activityRequest.UserId,
@@ -33,6 +34,7 @@ namespace ServerlessMicroservice.Infrastructure.Services
             };
 
             await _activityRepository.AddAsync(activity);
+
         }
 
         public async Task<ActivityResponse> GetAllAsync()

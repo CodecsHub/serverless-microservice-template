@@ -41,8 +41,8 @@ namespace ServerlessMicroservice.API.Controllers
 
         // GET api/v1/products
         [HttpGet]
-       // [ProducesResponseType(200)]
-       // [ProducesResponseType(404)]
+       [ProducesResponseType(200)]
+       [ProducesResponseType(404)]
         public async Task<ActionResult<ActivityResponse>> Get()
         {
             try
@@ -65,15 +65,30 @@ namespace ServerlessMicroservice.API.Controllers
         }
 
         // POST api/v1/products
-        //[ProducesResponseType(201, Type = typeof(Activity))]
-        [ProducesResponseType(201)]
-        //  [ProducesResponseType(400)]
+        [ProducesResponseType(201, Type = typeof(Activity))]
+        [ProducesResponseType(400)]
         [HttpPost]
 
         public async Task Post([FromBody]ActivityRequest activityRequest)
         {
+
             await _activityService.AddAsync(activityRequest);
 
+
+            //try
+            //{
+            //    var output = await _activityService.AddAsync(activityRequest);
+            //    if (output == null)
+            //    {
+            //        return NotFound();
+            //    }
+
+            //    return Ok(output);
+            //}
+            //catch (Exception)
+            //{
+            //    return BadRequest();
+            //}
         }
     }
 }
