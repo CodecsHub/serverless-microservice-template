@@ -13,12 +13,16 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
     public class ActivityRepository : IActivityRepository
     {
         private readonly string _connectionString;
+        //private readonly IDatabaseConnectionFactory _connectionFactory;
         private IDbConnection _connection { get { return new SqlConnection(_connectionString); } }
 
         public ActivityRepository()
         {
+
+
             // _connectionString = "Server=DESKTOP-85SV1TI\\SQLEXPRESS;Database=RESTfulSampleDb;Trusted_Connection=True;MultipleActiveResultSets=true";
             _connectionString = "Server=FABAYON;Database=TitleMicroservice0000TemplateDatabase;Trusted_Connection=True;";
+           // _connectionFactory = _connectionString;
         }
 
         public async Task<Activity> AddAsync(Activity entity)

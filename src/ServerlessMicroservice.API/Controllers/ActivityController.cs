@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ServerlessMicroservice.Domain.Entities;
 using ServerlessMicroservice.Infrastructure.Contracts;
 using ServerlessMicroservice.Infrastructure.Interfaces;
 
@@ -21,7 +22,9 @@ namespace ServerlessMicroservice.API.Controllers
         }
 
         // GET api/v1/products/{id}
-        [HttpGet("{long:int}")]
+        [HttpGet("{id:long}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         public async Task<ActionResult<ActivityResponse>> Get(long id)
         {
 
@@ -38,6 +41,8 @@ namespace ServerlessMicroservice.API.Controllers
 
         // GET api/v1/products
         [HttpGet]
+       // [ProducesResponseType(200)]
+       // [ProducesResponseType(404)]
         public async Task<ActionResult<ActivityResponse>> Get()
         {
             try
@@ -60,8 +65,11 @@ namespace ServerlessMicroservice.API.Controllers
         }
 
         // POST api/v1/products
+        //[ProducesResponseType(201, Type = typeof(Activity))]
         [ProducesResponseType(201)]
+        //  [ProducesResponseType(400)]
         [HttpPost]
+
         public async Task Post([FromBody]ActivityRequest activityRequest)
         {
             await _activityService.AddAsync(activityRequest);
