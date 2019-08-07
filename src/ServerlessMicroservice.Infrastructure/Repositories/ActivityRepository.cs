@@ -21,14 +21,18 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
             _connectionString = "Server=FABAYON;Database=TitleMicroservice0000TemplateDatabase;Trusted_Connection=True;";
         }
 
-        public async Task AddAsync(Activity activity)
+        public async Task<Activity> AddAsync(Activity entity)
         {
             using (IDbConnection dbConnection = _connection)
             {
-                string query = "EXEC V1Activity_Post @UserId, @ApplicationId, @ActionId" +
+                const string query = "EXEC V1Activity_Post @UserId, @ApplicationId, @ActionId" +
                      ", @ApplicationUrl, @ActivityRemarks, @DateTimeLog";
 
-                await dbConnection.ExecuteAsync(query, activity);
+
+                 await dbConnection.ExecuteAsync(query, entity);
+                //var output = await dbConnection.QueryAsync<Activity>(query, activity);
+
+                return entity;
             }
 
         }
@@ -38,16 +42,34 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
             //TODO: Paging...
             using (IDbConnection dbConnection = _connection)
             {
-                string query = "SELECT * FROM Activity";
+                const string query = "SELECT * FROM Activity";
                 var output = await dbConnection.QueryAsync<Activity>(query);
 
                 return output;
             }
         }
 
-        public Task<Activity> GetByIdAsync(long id)
+        public async Task<Activity> GetByIdAsync(long id)
         {
-            throw new NotImplementedException();
+
+            using (IDbConnection dbConnection = _connection)
+            {
+                //const string query = "SELECT * FROM Activity WHERE Id = @id";
+                //var output = await dbConnection.QuerySingleOrDefaultAsync<Activity>(query,
+                //    new
+                //    {
+                //        id
+                //    });
+
+                //return output;
+                const string Sql = "SELECT * FROM Activity WHERE Id = @id";
+                var output = await dbConnection.QuerySingleOrDefaultAsync<Activity>(Sql,
+                    new {
+                        @id = id
+                    });
+                return output;
+            }
         }
+
     }
 }

@@ -33,7 +33,6 @@ namespace ServerlessMicroservice.Infrastructure.Services
             };
 
             await _activityRepository.AddAsync(activity);
-
         }
 
         public async Task<ActivityResponse> GetAllAsync()
@@ -57,6 +56,7 @@ namespace ServerlessMicroservice.Infrastructure.Services
         {
             ActivityResponse activityResponse = new ActivityResponse();
             var activity = await _activityRepository.GetByIdAsync(id);
+            //IEnumerable<Activity> activity = await _activityRepository.GetByIdAsync(id);
 
             if (activity == null)
             {

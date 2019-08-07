@@ -9,7 +9,8 @@ namespace ServerlessMicroservice.Infrastructure.Interfaces
     public interface IActivityRepository
     {
         Task<Activity> GetByIdAsync(long id);
+        //Task<IEnumerable<Activity>> GetByIdAsync(long id);
         Task<IEnumerable<Activity>> GetAllAsync();
-        Task AddAsync(Activity product);
+        Task<Activity> AddAsync(Activity entity);
     }
 }
