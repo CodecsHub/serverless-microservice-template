@@ -46,7 +46,7 @@ namespace ServerlessMicroservice.Infrastructure.Services
             }
             else
             {
-                activityResponse.Activities.AddRange(activity);
+                activityResponse.Data.AddRange(activity);
             }
 
             return activityResponse;
@@ -64,7 +64,7 @@ namespace ServerlessMicroservice.Infrastructure.Services
             }
             else
             {
-                activityResponse.Activities.Add(activity);
+                activityResponse.Data.Add(activity);
             }
 
             return activityResponse;

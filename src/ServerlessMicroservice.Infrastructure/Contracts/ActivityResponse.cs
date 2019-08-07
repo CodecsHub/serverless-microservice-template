@@ -10,12 +10,12 @@ namespace ServerlessMicroservice.Infrastructure.Contracts
     {
         public ActivityResponse()
         {
-            Activities = new List<Activity>();
+            Data = new List<Activity>();
         }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Message { get; set; }
 
-        public List<Activity> Activities { get; set; }
+        public List<Activity> Data { get; set; }
     }
 }
