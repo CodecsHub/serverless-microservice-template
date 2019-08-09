@@ -66,6 +66,7 @@ namespace ServerlessMicroservice.Infrastructure.Services
             }
             else
             {
+                activityResponse.Message = "1 actvity is found.";
                 activityResponse.Data.Add(activity);
             }
 

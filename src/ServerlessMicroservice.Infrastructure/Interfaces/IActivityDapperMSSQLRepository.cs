@@ -6,5 +6,6 @@ namespace ServerlessMicroservice.Infrastructure.Interfaces
 {
     public interface IActivityDapperMSSQLRepository : IBaseRepository
     {
+
     }
 }

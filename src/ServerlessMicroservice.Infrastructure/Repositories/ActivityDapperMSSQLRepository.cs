@@ -13,9 +13,11 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
     {
         private readonly string _connectionString;
         private IDbConnection _connection { get { return new SqlConnection(_connectionString); } }
+        private readonly IActivityDapperMSSQLRepository _activityDapperMSSQLRepository;
 
-        public ActivityDapperMSSQLRepository()
+        public ActivityDapperMSSQLRepository(IActivityDapperMSSQLRepository activityDapperMSSQLRepository)
         {
+            _activityDapperMSSQLRepository = activityDapperMSSQLRepository;
             // _connectionString = "Server=DESKTOP-85SV1TI\\SQLEXPRESS;Database=RESTfulSampleDb;Trusted_Connection=True;MultipleActiveResultSets=true";
             _connectionString = "Server=FABAYON;Database=TitleMicroservice0000TemplateDatabase;Trusted_Connection=True;";
 
@@ -25,17 +27,17 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<T>> GetAllData<T>(T model, string sql)
+        public async Task<IEnumerable<T>> GetAllData<T>(T model, string sql)
         {
-            //using (IDbConnection connectionString = new SqlConnection(_connectionString))
-            //{
-            //    var output = connectionString.Query<T>(sql, new DynamicParameters());
-            //    return output.ToList();
-            //}
-            throw new NotImplementedException();
+            using (IDbConnection connectionString = new SqlConnection(_connectionString))
+            {
+                var output = await connectionString.QueryAsync<T>(sql, new DynamicParameters());
+                return output;
+            }
+            // throw new NotImplementedException();
         }
 
-        public Task<T> GetDataBy<T>(T model, string sql)
+        public Task<IEnumerable<T>> GetDataBy<T>(T model, string sql)
         {
             throw new NotImplementedException();
         }

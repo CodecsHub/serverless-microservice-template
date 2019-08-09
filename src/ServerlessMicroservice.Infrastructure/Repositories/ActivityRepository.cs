@@ -27,6 +27,8 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
 
         public async Task<Activity> AddAsync(Activity entity)
         {
+
+
             using (IDbConnection dbConnection = _connection)
             {
                 const string query = "EXEC V1Activity_Post @UserId, @ApplicationId, @ActionId" +
@@ -43,6 +45,7 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
 
         public async Task<IEnumerable<Activity>> GetAllAsync()
         {
+            //var todoDictionary = new Dictionary<int, ToDoItem>();
             //TODO: Paging...
             using (IDbConnection dbConnection = _connection)
             {
@@ -66,7 +69,8 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
                 //    });
 
                 //return output;
-                const string Sql = "SELECT * FROM Activity WHERE Id = @id";
+                const string Sql = "SELECT * FROM ActivitID WHERE Id " +
+                    "= @id";
                 var output = await dbConnection.QuerySingleOrDefaultAsync<Activity>(Sql,
                     new {
                         @id = id
