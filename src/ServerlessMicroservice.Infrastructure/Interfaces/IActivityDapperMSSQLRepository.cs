@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ServerlessMicroservice.Infrastructure.Interfaces
 {
-    public interface IActivityDapperMSSQLRepository : IBaseRepository
+    public interface IActivityDapperMSSQLRepository
     {
 
     }

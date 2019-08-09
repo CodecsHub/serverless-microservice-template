@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ServerlessMicroservice.Infrastructure.Repositories
 {
+    //public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity
     public class ActivityDapperMSSQLRepository : IActivityDapperMSSQLRepository
     {
         private readonly string _connectionString;
