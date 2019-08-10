@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ServerlessMicroservice.API.Extensions;
 using ServerlessMicroservice.API.Utilities;
 using ServerlessMicroservice.Infrastructure.Interfaces;
 using ServerlessMicroservice.Infrastructure.Repositories;
@@ -103,6 +104,17 @@ namespace ServerlessMicroservice.API
                 app.UseHsts();
                 app.UseExceptionHandler();
             }
+
+            //<summary>
+            // @title:  Custom Global Error Trapping
+            // @description: Custom error helper class base on http request error try/catch statement
+            //              also to globalize the location of Try/Catch statement with clean controller
+            // @see: Servces/ExtensionExceptionMiddleware.cs
+            // @see: Herlper/ExceptionMiddleware.cs
+            // @see: Model/UtitlityErrorDetails.cs
+            // @url: https://jack-vanlightly.com/blog/2017/8/23/api-series-part-2-swagger
+            //</summary>
+            app.ConfigureCustomExceptionMiddleware();
 
             // force the request to use https traffic
             app.UseHttpsRedirection();

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ServerlessMicroservice.Domain.Contracts
 {
-    public abstract class BaseContracts
+    public class BaseContracts
     {
         public int StatusCode { get; set; }
 
