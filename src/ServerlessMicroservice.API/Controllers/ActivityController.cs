@@ -25,7 +25,7 @@ namespace ServerlessMicroservice.API.Controllers
         [HttpGet("{id:long}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<ActivityResponse>> Get(long id)
+        public async Task<IActionResult> Get(long id)
         {
 
 
@@ -41,9 +41,9 @@ namespace ServerlessMicroservice.API.Controllers
 
         // GET api/v1/products
         [HttpGet]
-       [ProducesResponseType(200)]
-       [ProducesResponseType(404)]
-        public async Task<ActionResult<ActivityResponse>> Get()
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> Get()
         {
             try
             {
