@@ -15,7 +15,7 @@ namespace ServerlessMicroservice.Domain.Entities
 
         public long UserId { get; set; }
         public User User { get; set; } // many to one see <c>User.cs<c>
-      
+
 
 
 
