@@ -48,7 +48,8 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
 
 
 
-                 await dbConnection.ExecuteAsync(SqlQueries.Add, entity);
+                 await dbConnection.ExecuteAsync(SqlQueries.Add, entity)
+                    .ConfigureAwait(false);
                 //var output = await dbConnection.QueryAsync<Activity>(query, activity);
 
                 return entity;
@@ -62,8 +63,14 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
             //TODO: Paging...
             using (IDbConnection dbConnection = _connection)
             {
+                //var sellerOffers = await connection.QueryAsync<Offer>(GetSellerOffers, new { id });
+                //var seller = await connection.QuerySingleAsync<Seller>(GetSeller, new { id });
 
-                var output = await dbConnection.QueryAsync<Activity>(SqlQueries.GetAll);
+                //seller.Offers = sellerOffers.ToList();
+
+                //return seller;
+                var output = await dbConnection.QueryAsync<Activity>(SqlQueries.GetAll)
+                    .ConfigureAwait(false);
 
                 return output;
             }
@@ -85,7 +92,8 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
                 var output = await dbConnection.QuerySingleOrDefaultAsync<Activity>(SqlQueries.GetById,
                     new {
                         @id = id
-                    });
+                    })
+                    .ConfigureAwait(false);
                 return output;
             }
         }
