@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="API\" />
+    <Folder Include="Extensions\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
