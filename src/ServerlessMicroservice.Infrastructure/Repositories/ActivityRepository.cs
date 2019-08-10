@@ -69,7 +69,7 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
                 //    });
 
                 //return output;
-                const string Sql = "SELECT * FROM ActivitID WHERE Id " +
+                const string Sql = "SELECT * FROM Activity WHERE Id " +
                     "= @id";
                 var output = await dbConnection.QuerySingleOrDefaultAsync<Activity>(Sql,
                     new {

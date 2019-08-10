@@ -45,9 +45,12 @@ namespace ServerlessMicroservice.Infrastructure.Services
             if (activity.ToList().Count == 0)
             {
                 activityResponse.Message = "Activities not found.";
+               // activityResponse.StatusCode = 404;
             }
             else
             {
+                //activityResponse.StatusCode = 200;
+                activityResponse.Message = activity.ToList().Count + " actvity is found.";
                 activityResponse.Data.AddRange(activity);
             }
 
@@ -62,10 +65,12 @@ namespace ServerlessMicroservice.Infrastructure.Services
 
             if (activity == null)
             {
+                //activityResponse.StatusCode = 404;
                 activityResponse.Message = "Activity not found.";
             }
             else
             {
+                //activityResponse.StatusCode = 200;
                 activityResponse.Message = "1 actvity is found.";
                 activityResponse.Data.Add(activity);
             }

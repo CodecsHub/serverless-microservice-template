@@ -5,8 +5,9 @@ using System.Text;
 
 namespace ServerlessMicroservice.Domain.Contracts
 {
-    public class BaseContracts
+    public partial class BaseContracts
     {
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public int StatusCode { get; set; }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
