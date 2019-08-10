@@ -1,5 +1,5 @@
-﻿using ServerlessMicroservice.Domain.Entities;
-using ServerlessMicroservice.Infrastructure.Contracts;
+﻿using ServerlessMicroservice.Domain.Contracts;
+using ServerlessMicroservice.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;

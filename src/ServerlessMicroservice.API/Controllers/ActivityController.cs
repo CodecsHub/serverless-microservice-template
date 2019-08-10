@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServerlessMicroservice.Domain.Entities;
-using ServerlessMicroservice.Infrastructure.Contracts;
+using ServerlessMicroservice.Domain.Contracts;
 using ServerlessMicroservice.Infrastructure.Interfaces;
 
 namespace ServerlessMicroservice.API.Controllers

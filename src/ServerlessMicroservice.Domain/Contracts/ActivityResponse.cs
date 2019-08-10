@@ -2,20 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Newtonsoft.Json;
 
-namespace ServerlessMicroservice.Infrastructure.Contracts
+namespace ServerlessMicroservice.Domain.Contracts
 {
-    public class ActivityResponse
+    public class ActivityResponse : BaseContracts
     {
         public ActivityResponse()
         {
             Data = new List<Activity>();
         }
 
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Message { get; set; }
+
 
         public List<Activity> Data { get; set; }
+
+
     }
 }

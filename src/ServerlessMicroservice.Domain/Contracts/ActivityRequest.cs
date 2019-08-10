@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ServerlessMicroservice.Infrastructure.Contracts
+namespace ServerlessMicroservice.Domain.Contracts
 {
     public class ActivityRequest
     {
