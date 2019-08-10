@@ -8,7 +8,7 @@ namespace ServerlessMicroservice.Domain.Interfaces
 {
     public interface IBaseRepositories<T> where T : BaseEntity
     {
-        Task<T> GetById(string sql);
+
         Task<IEnumerable<T>> GetAllData(T model, string sql);
         Task<IEnumerable<T>> GetDataBy(T model, string sql);
 
