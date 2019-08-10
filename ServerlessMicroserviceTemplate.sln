@@ -9,6 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerlessMicroservice.Infr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerlessMicroservice.API", "src\ServerlessMicroservice.API\ServerlessMicroservice.API.csproj", "{CC94724D-CE02-4B37-BA03-8218FED2E951}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{69D2292A-6999-4437-AD1C-A53BF1E190F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F614A472-A885-4706-938F-0FA13ADC4FC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{34FD6E6E-02B0-4E56-91AA-519B256A3693}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{ADDCA7AB-E3A0-40E3-8B2C-7A374598B831}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +38,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9D29C4ED-ECE7-4648-BF58-74EF0E1A6CA5} = {69D2292A-6999-4437-AD1C-A53BF1E190F2}
+		{A8060E30-8D4C-4A36-9B9E-8B98B977437E} = {69D2292A-6999-4437-AD1C-A53BF1E190F2}
+		{CC94724D-CE02-4B37-BA03-8218FED2E951} = {69D2292A-6999-4437-AD1C-A53BF1E190F2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D0E880-0EB1-41DB-A231-735217ED4A2C}
