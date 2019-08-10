@@ -12,6 +12,20 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
 {
     public class ActivityRepository : IActivityRepository
     {
+        private static class SqlQueries
+        {
+            internal static string GetAll = "SELECT * FROM Activity";
+
+            internal static string GetById = "SELECT Id,UserId,ActionId,ApplicationUrl FROM Activity WHERE Id = @id";
+
+            internal static string Add = "EXEC V1Activity_Post @UserId, @ApplicationId, @ActionId" +
+                     ", @ApplicationUrl, @ActivityRemarks, @DateTimeLog";
+
+            internal static string Edit = "SELECT Id,UserId,ActionId,ApplicationUrl FROM Activity WHERE Id = @id";
+
+            internal static string Delete = "SELECT Id,UserId,ActionId,ApplicationUrl FROM Activity WHERE Id = @id";
+        }
+
         private readonly string _connectionString;
         //private readonly IDatabaseConnectionFactory _connectionFactory;
         private IDbConnection _connection { get { return new SqlConnection(_connectionString); } }
@@ -31,11 +45,10 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
 
             using (IDbConnection dbConnection = _connection)
             {
-                const string query = "EXEC V1Activity_Post @UserId, @ApplicationId, @ActionId" +
-                     ", @ApplicationUrl, @ActivityRemarks, @DateTimeLog";
 
 
-                 await dbConnection.ExecuteAsync(query, entity);
+
+                 await dbConnection.ExecuteAsync(SqlQueries.Add, entity);
                 //var output = await dbConnection.QueryAsync<Activity>(query, activity);
 
                 return entity;
@@ -49,8 +62,8 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
             //TODO: Paging...
             using (IDbConnection dbConnection = _connection)
             {
-                const string query = "SELECT * FROM Activity";
-                var output = await dbConnection.QueryAsync<Activity>(query);
+
+                var output = await dbConnection.QueryAsync<Activity>(SqlQueries.GetAll);
 
                 return output;
             }
@@ -69,9 +82,7 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
                 //    });
 
                 //return output;
-                const string Sql = "SELECT * FROM Activity WHERE Id " +
-                    "= @id";
-                var output = await dbConnection.QuerySingleOrDefaultAsync<Activity>(Sql,
+                var output = await dbConnection.QuerySingleOrDefaultAsync<Activity>(SqlQueries.GetById,
                     new {
                         @id = id
                     });
