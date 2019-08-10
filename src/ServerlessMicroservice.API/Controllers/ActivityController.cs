@@ -41,8 +41,8 @@ namespace ServerlessMicroservice.API.Controllers
 
         // GET api/v1/products
         [HttpGet]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(404)]
+        [ProducesResponseType(typeof(ActivityResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Get()
         {
             try
@@ -65,10 +65,10 @@ namespace ServerlessMicroservice.API.Controllers
         }
 
         // POST api/v1/products
-        [ProducesResponseType(201, Type = typeof(Activity))]
-        [ProducesResponseType(400)]
         [HttpPost]
-
+        //[ProducesResponseType(201, Type = typeof(Activity))]
+        [ProducesResponseType(typeof(ActivityResponse), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task Post([FromBody]ActivityRequest activityRequest)
         {
 
