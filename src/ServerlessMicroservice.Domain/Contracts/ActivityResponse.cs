@@ -10,10 +10,10 @@ namespace ServerlessMicroservice.Domain.Contracts
         // @todo: convert from list to hashset for better performance
         public ActivityResponse()
         {
-            ReturnData = new List<Activity>();
+            Data = new List<Activity>();
         }
 
-        public List<Activity> ReturnData { get; set; }
+        public List<Activity> Data { get; set; }
 
     }
 }

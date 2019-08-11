@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using ServerlessMicroservice.API.Extensions;
 using ServerlessMicroservice.API.Utilities;
+using ServerlessMicroservice.Domain.Interfaces;
 using ServerlessMicroservice.Infrastructure.Interfaces;
 using ServerlessMicroservice.Infrastructure.Repositories;
 using ServerlessMicroservice.Infrastructure.Services;
@@ -80,7 +81,7 @@ namespace ServerlessMicroservice.API
 
             // Add application services.
             services.AddTransient<IActivityService, ActivityService>();
-            services.AddTransient<IActivityRepository, ActivityRepository>();
+            services.AddTransient<IActivityRepository, ActivityMsSqlRepository>();
 
 
             // <c>nameof<c> operator. This assumes that the the section in the JSON file matches the name of the class object representing it.

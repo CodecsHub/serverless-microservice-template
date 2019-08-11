@@ -7,13 +7,13 @@ namespace ServerlessMicroservice.Domain.Interfaces
     public interface IBaseRepositories<T> where T : BaseEntity
     {
 
-        Task<IEnumerable<T>> GetAllData(T model, string sql);
-        Task<IEnumerable<T>> GetDataBy(T model, string sql);
+        Task<IEnumerable<T>> GetAllData();
+        Task<IEnumerable<T>> GetDataBy(T model);
 
-        Task<T> InsertData(T model, string sql);
-        Task<T> UpdateData(T model, string sql);
-        Task<T> DeleteData(T model, string sql);
+        Task<T> InsertData(T model);
+        Task<T> UpdateData(T model);
+        Task<T> DeleteData(T model);
 
-        Task<int> CountAll(string sql);
+        Task<int> CountAll();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using ServerlessMicroservice.Domain.Contracts;
 using ServerlessMicroservice.Domain.Entities;
+using ServerlessMicroservice.Domain.Interfaces;
 using ServerlessMicroservice.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -33,14 +34,14 @@ namespace ServerlessMicroservice.Infrastructure.Services
                 ActivityRemarks = activityRequest.ActivityRemarks
             };
 
-            await _activityRepository.AddAsync(activity);
+            await _activityRepository.InsertData(activity);
 
         }
 
         public async Task<ActivityResponse> GetAllAsync()
         {
             ActivityResponse activityResponse = new ActivityResponse();
-            IEnumerable<Activity> activity = await _activityRepository.GetAllAsync();
+            IEnumerable<Activity> activity = await _activityRepository.GetAllData();
 
             if (activity.ToList().Count == 0)
             {
@@ -51,17 +52,17 @@ namespace ServerlessMicroservice.Infrastructure.Services
             {
                 //activityResponse.StatusCode = 200;
                 activityResponse.Message = activity.ToList().Count + " actvity is found.";
-                activityResponse.ReturnData.AddRange(activity);
+                activityResponse.Data.AddRange(activity);
             }
 
             return activityResponse;
         }
 
-        public async Task<ActivityResponse> GetAsync(long id)
+        public async Task<ActivityResponse> GetByIdAsync(long id)
         {
             ActivityResponse activityResponse = new ActivityResponse();
-            var activity = await _activityRepository.GetByIdAsync(id);
-            //IEnumerable<Activity> activity = await _activityRepository.GetByIdAsync(id);
+
+            var activity = await _activityRepository.GetByIdData(id);
 
             if (activity == null)
             {
@@ -72,7 +73,7 @@ namespace ServerlessMicroservice.Infrastructure.Services
             {
                 //activityResponse.StatusCode = 200;
                 activityResponse.Message = "1 actvity is found.";
-                activityResponse.ReturnData.Add(activity);
+                activityResponse.Data.Add(activity);
             }
 
             return activityResponse;

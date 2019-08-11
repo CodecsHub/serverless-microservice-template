@@ -1,23 +1,13 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace ServerlessMicroservice.Domain.Contracts
 {
     public partial class BaseContracts
     {
-        public DateTime DateTimeLog { get; protected set; } = DateTime.UtcNow;
+        public DateTime Log { get; protected set; } = DateTime.UtcNow;
 
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public int HttpStatusCode { get; set; }
+        public int Code { get; set; }
 
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Message { get; set; }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
     }
 }

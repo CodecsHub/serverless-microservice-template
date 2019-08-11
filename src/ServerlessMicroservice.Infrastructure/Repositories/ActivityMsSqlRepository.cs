@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using ServerlessMicroservice.Domain.Entities;
-using ServerlessMicroservice.Infrastructure.Interfaces;
+using ServerlessMicroservice.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ServerlessMicroservice.Infrastructure.Repositories
 {
-    public class ActivityRepository : IActivityRepository
+    public class ActivityMsSqlRepository : IActivityRepository
     {
         private static class SqlQueries
         {
@@ -30,34 +30,24 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
         //private readonly IDatabaseConnectionFactory _connectionFactory;
         private IDbConnection _connection { get { return new SqlConnection(_connectionString); } }
 
-        public ActivityRepository()
+        public ActivityMsSqlRepository()
         {
-
-
             // _connectionString = "Server=DESKTOP-85SV1TI\\SQLEXPRESS;Database=RESTfulSampleDb;Trusted_Connection=True;MultipleActiveResultSets=true";
             _connectionString = "Server=FABAYON;Database=TitleMicroservice0000TemplateDatabase;Trusted_Connection=True;";
-           // _connectionFactory = _connectionString;
+            // _connectionFactory = _connectionString;
         }
 
-        public async Task<Activity> AddAsync(Activity entity)
+        public Task<int> CountAll()
         {
-
-
-            using (IDbConnection dbConnection = _connection)
-            {
-
-
-
-                 await dbConnection.ExecuteAsync(SqlQueries.Add, entity)
-                    .ConfigureAwait(false);
-                //var output = await dbConnection.QueryAsync<Activity>(query, activity);
-
-                return entity;
-            }
-
+            throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Activity>> GetAllAsync()
+        public Task<Activity> DeleteData(Activity model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Activity>> GetAllData()
         {
             //var todoDictionary = new Dictionary<int, ToDoItem>();
             //TODO: Paging...
@@ -76,9 +66,33 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
             }
         }
 
-        public async Task<Activity> GetByIdAsync(long id)
+        public Task<IEnumerable<Activity>> GetDataBy(Activity model)
         {
+            throw new NotImplementedException();
+        }
 
+        public async Task<Activity> InsertData(Activity model)
+        {
+            using (IDbConnection dbConnection = _connection)
+            {
+
+
+
+                await dbConnection.ExecuteAsync(SqlQueries.Add, model)
+                   .ConfigureAwait(false);
+                //var output = await dbConnection.QueryAsync<Activity>(query, activity);
+
+                return model;
+            }
+        }
+
+        public Task<Activity> UpdateData(Activity model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Activity> GetByIdData(long id)
+        {
             using (IDbConnection dbConnection = _connection)
             {
                 //const string query = "SELECT * FROM Activity WHERE Id = @id";
@@ -90,13 +104,13 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
 
                 //return output;
                 var output = await dbConnection.QuerySingleOrDefaultAsync<Activity>(SqlQueries.GetById,
-                    new {
+                    new
+                    {
                         @id = id
                     })
                     .ConfigureAwait(false);
                 return output;
             }
         }
-
     }
 }

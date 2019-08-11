@@ -29,7 +29,7 @@ namespace ServerlessMicroservice.API.Controllers
         {
 
 
-                var output = await _activityService.GetAsync(id);
+                var output = await _activityService.GetByIdAsync(id);
 
 
 
