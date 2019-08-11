@@ -1,7 +1,5 @@
 ﻿using ServerlessMicroservice.Domain.Shared;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ServerlessMicroservice.Domain.Entities
 {

@@ -6,7 +6,7 @@ namespace ServerlessMicroservice.Domain.Contracts
 {
     public class ActivityRequest
     {
-        public long UserId { get; set; }
+        public Int64 UserId { get; set; }
         public int ApplicationId { get; set; }
         public int ActionId { get; set; }
         public string ApplicationUrl { get; set; }

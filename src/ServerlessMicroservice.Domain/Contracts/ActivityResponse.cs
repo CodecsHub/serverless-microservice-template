@@ -7,15 +7,13 @@ namespace ServerlessMicroservice.Domain.Contracts
 {
     public class ActivityResponse : BaseContracts
     {
+        // @todo: convert from list to hashset for better performance
         public ActivityResponse()
         {
-            Data = new List<Activity>();
+            ReturnData = new List<Activity>();
         }
 
-
-
-        public List<Activity> Data { get; set; }
-
+        public List<Activity> ReturnData { get; set; }
 
     }
 }

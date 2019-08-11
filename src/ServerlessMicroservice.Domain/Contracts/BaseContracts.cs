@@ -7,8 +7,10 @@ namespace ServerlessMicroservice.Domain.Contracts
 {
     public partial class BaseContracts
     {
+        public DateTime DateTimeLog { get; protected set; } = DateTime.UtcNow;
+
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public int StatusCode { get; set; }
+        public int HttpStatusCode { get; set; }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Message { get; set; }

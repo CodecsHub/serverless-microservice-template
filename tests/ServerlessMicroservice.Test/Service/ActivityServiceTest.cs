@@ -1,6 +1,4 @@
-﻿using Autofac.Extras.Moq;
-using ServerlessMicroservice.Domain.Entities;
-using ServerlessMicroservice.Domain.Interfaces;
+﻿using ServerlessMicroservice.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,26 +11,26 @@ namespace ServerlessMicroservice.Test.Service
         [Fact]
         public void LoadPeople_ValidCall()
         {
-            //using (var mock = AutoMock.GetLoose())
-            //{
-            //    mock.Mock<IActivityRepository>()
-            //        .Setup(x => x.GetAllData<Activity>("select * from Person"))
-            //        .Returns(GetSamplePeople());
-
-            //    var cls = mock.Create<Activity>();
-            //    var expected = GetSamplePeople();
-
-            //    var actual = cls.GetSamplePeople();
-
-            //    Assert.True(actual != null);
-            //    Assert.Equal(expected.Count, actual.Count);
-
-            //    for (int i = 0; i < expected.Count; i++)
+            //    using (var mock = AutoMock.GetLoose())
             //    {
-            //        Assert.Equal(expected[i].FirstName, actual[i].FirstName);
-            //        Assert.Equal(expected[i].LastName, actual[i].LastName);
+            //        mock.Mock<ISqliteDataAccess>()
+            //            .Setup(x => x.LoadData<PersonModel>("select * from Person"))
+            //            .Returns(GetSamplePeople());
+
+            //        var cls = mock.Create<PersonProcessor>();
+            //        var expected = GetSamplePeople();
+
+            //        var actual = cls.LoadPeople();
+
+            //        Assert.True(actual != null);
+            //        Assert.Equal(expected.Count, actual.Count);
+
+            //        for (int i = 0; i < expected.Count; i++)
+            //        {
+            //            Assert.Equal(expected[i].FirstName, actual[i].FirstName);
+            //            Assert.Equal(expected[i].LastName, actual[i].LastName);
+            //        }
             //    }
-            //}
         }
 
 
@@ -72,9 +70,9 @@ namespace ServerlessMicroservice.Test.Service
                 {
                    Id = 4,
                     UserId = 3,
-                    ApplicationId = 3,
+                    ApplicationId = 2,
                     ActionId =2,
-                    ApplicationUrl = "https only",
+                    ApplicationUrl = "https",
                     ActivityRemarks = "code just copy"
                 }
             };

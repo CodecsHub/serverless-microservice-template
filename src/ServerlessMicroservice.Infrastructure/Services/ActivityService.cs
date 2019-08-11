@@ -51,7 +51,7 @@ namespace ServerlessMicroservice.Infrastructure.Services
             {
                 //activityResponse.StatusCode = 200;
                 activityResponse.Message = activity.ToList().Count + " actvity is found.";
-                activityResponse.Data.AddRange(activity);
+                activityResponse.ReturnData.AddRange(activity);
             }
 
             return activityResponse;
@@ -72,7 +72,7 @@ namespace ServerlessMicroservice.Infrastructure.Services
             {
                 //activityResponse.StatusCode = 200;
                 activityResponse.Message = "1 actvity is found.";
-                activityResponse.Data.Add(activity);
+                activityResponse.ReturnData.Add(activity);
             }
 
             return activityResponse;
