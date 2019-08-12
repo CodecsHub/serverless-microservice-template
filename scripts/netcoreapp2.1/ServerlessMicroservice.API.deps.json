@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "686a9fcd116947bb163884de342ea3e213390da4"
+    "signature": "484329961d392856643e4a32e359339583a37dda"
   },
   "compilationOptions": {
     "defines": [
@@ -32,6 +32,7 @@
           "NWebsec.AspNetCore.Middleware": "2.0.0",
           "Serilog.AspNetCore": "2.1.1",
           "Serilog.Settings.Configuration": "3.1.0",
+          "Serilog.Sinks.ApplicationInsights": "3.0.4",
           "Serilog.Sinks.MSSqlServer": "5.1.2",
           "ServerlessMicroservice.Domain": "1.0.0",
           "ServerlessMicroservice.Infrastructure": "1.0.0",
@@ -60,6 +61,21 @@
         },
         "compile": {
           "lib/netstandard2.0/Dapper.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights/2.10.0": {
+        "dependencies": {
+          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Runtime.InteropServices": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.ApplicationInsights.dll": {
+            "assemblyVersion": "2.10.0.0",
+            "fileVersion": "2.10.0.31626"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.ApplicationInsights.dll": {}
         }
       },
       "Microsoft.AspNetCore.Mvc.Versioning/2.2.0": {
@@ -460,29 +476,18 @@
           "lib/netstandard2.0/NWebsec.AspNetCore.Middleware.dll": {}
         }
       },
-      "Serilog/2.6.0": {
+      "Serilog/2.8.0": {
         "dependencies": {
-          "Microsoft.CSharp": "4.5.0",
-          "System.Collections": "4.3.0",
-          "System.Collections.NonGeneric": "4.3.0",
-          "System.Dynamic.Runtime": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Extensions": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading": "4.3.0"
+          "System.Collections.NonGeneric": "4.3.0"
         },
         "runtime": {
-          "lib/netstandard1.3/Serilog.dll": {
+          "lib/netstandard2.0/Serilog.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.6.0.0"
+            "fileVersion": "2.8.0.0"
           }
         },
         "compile": {
-          "lib/netstandard1.3/Serilog.dll": {}
+          "lib/netstandard2.0/Serilog.dll": {}
         }
       },
       "Serilog.AspNetCore/2.1.1": {
@@ -490,7 +495,7 @@
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.1.1",
           "Microsoft.Extensions.DependencyInjection": "2.1.1",
           "Microsoft.Extensions.Logging": "2.1.1",
-          "Serilog": "2.6.0",
+          "Serilog": "2.8.0",
           "Serilog.Extensions.Logging": "2.0.0"
         },
         "runtime": {
@@ -506,7 +511,7 @@
       "Serilog.Extensions.Logging/2.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Logging": "2.1.1",
-          "Serilog": "2.6.0"
+          "Serilog": "2.8.0"
         },
         "runtime": {
           "lib/netstandard2.0/Serilog.Extensions.Logging.dll": {
@@ -522,7 +527,7 @@
         "dependencies": {
           "Microsoft.Extensions.DependencyModel": "2.1.0",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.1",
-          "Serilog": "2.6.0"
+          "Serilog": "2.8.0"
         },
         "runtime": {
           "lib/netstandard2.0/Serilog.Settings.Configuration.dll": {
@@ -534,9 +539,24 @@
           "lib/netstandard2.0/Serilog.Settings.Configuration.dll": {}
         }
       },
+      "Serilog.Sinks.ApplicationInsights/3.0.4": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "2.10.0",
+          "Serilog": "2.8.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Serilog.Sinks.ApplicationInsights.dll": {
+            "assemblyVersion": "3.0.4.0",
+            "fileVersion": "3.0.4.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Serilog.Sinks.ApplicationInsights.dll": {}
+        }
+      },
       "Serilog.Sinks.MSSqlServer/5.1.2": {
         "dependencies": {
-          "Serilog": "2.6.0",
+          "Serilog": "2.8.0",
           "Serilog.Sinks.PeriodicBatching": "2.1.1",
           "System.Configuration.ConfigurationManager": "4.4.0",
           "System.Data.SqlClient": "4.5.1"
@@ -553,7 +573,7 @@
       },
       "Serilog.Sinks.PeriodicBatching/2.1.1": {
         "dependencies": {
-          "Serilog": "2.6.0",
+          "Serilog": "2.8.0",
           "System.Collections.Concurrent": "4.3.0",
           "System.Threading.Timer": "4.0.1"
         },
@@ -3845,6 +3865,13 @@
       "path": "dapper/1.60.6",
       "hashPath": "dapper.1.60.6.nupkg.sha512"
     },
+    "Microsoft.ApplicationInsights/2.10.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qwWKmevApRZmNUqSTiISgcGXkxnS7pxJGiqPkQT2LbrWKQr/CqjbIgzuXXkyHhvOfY39Cw7ZLmIltKbTmIFzig==",
+      "path": "microsoft.applicationinsights/2.10.0",
+      "hashPath": "microsoft.applicationinsights.2.10.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Mvc.Versioning/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -3999,12 +4026,12 @@
       "path": "nwebsec.aspnetcore.middleware/2.0.0",
       "hashPath": "nwebsec.aspnetcore.middleware.2.0.0.nupkg.sha512"
     },
-    "Serilog/2.6.0": {
+    "Serilog/2.8.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hxHgHkza8ZowrvQ+jTEF2ypDWGP8NbNtxPQIx7ogTAM9fisDFo2+6kOaxCkleZLO8hiyq0kW5tDLkgm/dbj9uA==",
-      "path": "serilog/2.6.0",
-      "hashPath": "serilog.2.6.0.nupkg.sha512"
+      "sha512": "sha512-zjuKXW5IQws43IHX7VY9nURsaCiBYh2kyJCWLJRSWrTsx/syBKHV8MibWe2A+QH3Er0AiwA+OJmO3DhFJDY1+A==",
+      "path": "serilog/2.8.0",
+      "hashPath": "serilog.2.8.0.nupkg.sha512"
     },
     "Serilog.AspNetCore/2.1.1": {
       "type": "package",
@@ -4026,6 +4053,13 @@
       "sha512": "sha512-BS+G1dhThTHBOYm8R21JNlR+Nh7ETAOlJuL1P6te1rOG98eV1vos5EyWRTGr0AbHgySxsGu1Q/evfFxS9+Gk1Q==",
       "path": "serilog.settings.configuration/3.1.0",
       "hashPath": "serilog.settings.configuration.3.1.0.nupkg.sha512"
+    },
+    "Serilog.Sinks.ApplicationInsights/3.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nspLybjDq6ALWXW+GNEEtZJkk99N3rZKMbA2BuNfCg62uvvrMSDA3Nx8T8eiB8BhyxT0NR9EBa0r0LV1MYxKow==",
+      "path": "serilog.sinks.applicationinsights/3.0.4",
+      "hashPath": "serilog.sinks.applicationinsights.3.0.4.nupkg.sha512"
     },
     "Serilog.Sinks.MSSqlServer/5.1.2": {
       "type": "package",
