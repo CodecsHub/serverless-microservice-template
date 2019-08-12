@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore;
@@ -19,7 +20,7 @@ namespace ServerlessMicroservice.API
     public class Program
     {
         /// <summary>
-        ///
+        /// @todo: https://asp.net-hacker.rocks/2018/09/24/customizing-aspnetcore-02-configuration.html refactor
         /// </summary>
         public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
@@ -68,9 +69,18 @@ namespace ServerlessMicroservice.API
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                    .UseStartup<Startup>()
+
                    .UseConfiguration(Configuration)
                    .UseSerilog()
-                   .UseKestrel()
+                   .UseKestrel(options =>
+                   {
+                       options.Listen(IPAddress.Loopback, 5000);
+                       options.Listen(IPAddress.Loopback, 5001, listenOptions =>
+                       {
+                           // Will study about the use https request certificate
+                           //listenOptions.UseHttps("certificate.pfx", "topsecret");
+                       });
+                   })
                    .Build();
 
     }

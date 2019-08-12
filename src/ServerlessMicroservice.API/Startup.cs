@@ -45,7 +45,10 @@ namespace ServerlessMicroservice.API
             _loggerFactory = loggerFactory;
 
 
+            // @todo: refactor the startup https://asp.net-hacker.rocks/2016/07/11/user-secrets-in-aspnetcore.html
         }
+
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         /// <summary>
@@ -143,6 +146,8 @@ namespace ServerlessMicroservice.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+
             }
             else
             {
@@ -163,10 +168,20 @@ namespace ServerlessMicroservice.API
             //@todo: visit the other custom microservice develop at ms00003 and ms00004 to check if this method is working
             //</summary>
             app.ConfigureCustomExceptionMiddleware();
-           // app.UseMiddleware<StackifyMiddleware.RequestTracerMiddleware>();
+            // app.UseMiddleware<StackifyMiddleware.RequestTracerMiddleware>();
 
             //app.UseMiddleware<SerilogRequestLogger>();
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                OnPrepareResponse = context =>
+                {
+                    context.Context.Response.Headers["Cache-Control"] =
+                            "private, max-age=43200";
+
+                    context.Context.Response.Headers["Expires"] =
+                            DateTime.UtcNow.AddHours(12).ToString("R");
+                }
+            });
             app.UseSwagger(SwaggerHelper.ConfigureSwagger);
             app.UseSwaggerUI(SwaggerHelper.ConfigureSwaggerUI);
 

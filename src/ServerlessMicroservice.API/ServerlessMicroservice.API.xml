@@ -251,9 +251,9 @@
              </summary>
         </member>
         <member name="P:ServerlessMicroservice.API.Program.Configuration">
-             <summary>
-            
-             </summary>
+            <summary>
+            @todo: https://asp.net-hacker.rocks/2018/09/24/customizing-aspnetcore-02-configuration.html refactor
+            </summary>
         </member>
         <member name="M:ServerlessMicroservice.API.Program.Main(System.String[])">
              <summary>
