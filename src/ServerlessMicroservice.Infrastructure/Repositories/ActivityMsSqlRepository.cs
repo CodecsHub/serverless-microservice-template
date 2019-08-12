@@ -16,7 +16,7 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
         {
             internal static string GetAll = "SELECT * FROM Activity";
 
-            internal static string GetById = "SELECT Id,UserId,ActionId,ApplicationUrl FROM Activity WHERE Id = @id";
+            internal static string GetById = "SELECT Id,UserId,ActionId,ApplicationUrl,RowVersionNumber FROM Activity WHERE Id = @id";
 
             internal static string Add = "EXEC V1Activity_Post @UserId, @ApplicationId, @ActionId" +
                      ", @ApplicationUrl, @ActivityRemarks, @DateCreated";

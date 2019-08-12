@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using ServerlessMicroservice.Domain.Entities;
 using ServerlessMicroservice.Domain.Contracts;
 using ServerlessMicroservice.Infrastructure.Interfaces;
+using System.Net;
 
 namespace ServerlessMicroservice.API.Controllers
 {
@@ -33,29 +34,53 @@ namespace ServerlessMicroservice.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [ResponseCache(Duration = 1800)]
+        [ResponseCache(Duration = 20)]
         [HttpGet("{id:long}")]
         [ProducesResponseType(typeof(ActivityResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Get(long id)
         {
 
-            try
-            {
+            //try
+            //{
+               // Activity activity = null;
+
+                // Get the requested ETag
+                string requestETag = "";
+                if (Request.Headers.ContainsKey("If-None-Match"))
+                {
+                    requestETag = Request.Headers["If-None-Match"].First();
+
+                }
+
+
+
+
                 var output = await _activityService.GetByIdAsync(id);
 
+                // If no contact was found, then return a 404
                 if (output == null)
                 {
                     return NoContent();
                 }
+                //string test = output.Data.
+                // Construct the new ETag
+              // var responseETag = 
 
+                // Return a 304 if the ETag of the current record matches the ETag in the "If-None-Match" HTTP header
+               // if (Request.Headers.ContainsKey("If-None-Match") && responseETag == requestETag)
+                //{
+                //    return StatusCode((int)HttpStatusCode.NotModified);
+                //}
 
+               // Response.Headers.Add("ETag", responseETag);
                 return Ok(output);
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    return BadRequest(ex);
+            //}
          }
 
         // GET api/v1/products
@@ -119,5 +144,6 @@ namespace ServerlessMicroservice.API.Controllers
             //    return BadRequest();
             //}
         }
+
     }
 }
