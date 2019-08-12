@@ -111,6 +111,52 @@
             </summary>
             <param name="app"></param>
         </member>
+        <member name="T:ServerlessMicroservice.API.Helpers.ActionDescriptorHelper">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Helpers.ActionDescriptorHelper.GetApiVersion(Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor)">
+             <summary>
+            
+             </summary>
+             <param name="actionDescriptor"></param>
+             <returns></returns>
+        </member>
+        <member name="T:ServerlessMicroservice.API.Helpers.ApiVersionAttributeHelper">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.Helpers.ApiVersionAttributeHelper.Versions">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Helpers.ApiVersionAttributeHelper.#ctor(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="version"></param>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Helpers.ApiVersionAttributeHelper.#ctor(System.String[])">
+             <summary>
+            
+             </summary>
+             <param name="versions"></param>
+        </member>
+        <member name="T:ServerlessMicroservice.API.Helpers.ApiVersionOperationFilterHelper">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Helpers.ApiVersionOperationFilterHelper.Apply(Swashbuckle.AspNetCore.Swagger.Operation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+             <summary>
+            
+             </summary>
+             <param name="operation"></param>
+             <param name="context"></param>
+        </member>
         <member name="T:ServerlessMicroservice.API.Helpers.ExceptionMiddleware">
              <summary>
             
@@ -131,28 +177,35 @@
              <returns></returns>
         </member>
         <member name="T:ServerlessMicroservice.API.Helpers.SwaggerHelper">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="M:ServerlessMicroservice.API.Helpers.SwaggerHelper.ConfigureSwaggerGen(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="swaggerGenOptions"></param>
+             </summary>
+             <param name="swaggerGenOptions"></param>
         </member>
         <member name="M:ServerlessMicroservice.API.Helpers.SwaggerHelper.ConfigureSwagger(Swashbuckle.AspNetCore.Swagger.SwaggerOptions)">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="swaggerOptions"></param>
+             </summary>
+             <param name="swaggerOptions"></param>
         </member>
         <member name="M:ServerlessMicroservice.API.Helpers.SwaggerHelper.ConfigureSwaggerUI(Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIOptions)">
-            <summary>
+             <summary>
             
+             </summary>
+             <param name="swaggerUIOptions"></param>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Helpers.SwaggerHelper.GetApiVersions(System.Reflection.Assembly)">
+             <summary>
             
-            </summary>
-            <param name="swaggerUIOptions"></param>
+             </summary>
+             <param name="webApiAssembly"></param>
+             <returns></returns>
+            @todo: refactor the api docuementaiton with looping https://jack-vanlightly.com/blog/2017/8/23/api-series-part-2-swagger
         </member>
         <member name="T:ServerlessMicroservice.API.Helpers.ValidationFilterAttribute">
             <summary>
@@ -190,30 +243,30 @@
             <returns></returns>
         </member>
         <member name="T:ServerlessMicroservice.API.Startup">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="M:ServerlessMicroservice.API.Startup.#ctor(Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILoggerFactory)">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="environment"></param>
-            <param name="configuration"></param>
-            <param name="loggerFactory"></param>
+             </summary>
+             <param name="environment"></param>
+             <param name="configuration"></param>
+             <param name="loggerFactory"></param>
         </member>
         <member name="M:ServerlessMicroservice.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="services"></param>
+             </summary>
+             <param name="services"></param>
         </member>
         <member name="M:ServerlessMicroservice.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="app"></param>
-            <param name="env"></param>
+             </summary>
+             <param name="app"></param>
+             <param name="env"></param>
         </member>
         <member name="T:ServerlessMicroservice.API.Utilities.ApplicationInformation">
              <summary>

@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ServerlessMicroservice.API.Controllers;
 using ServerlessMicroservice.API.Extensions;
 using ServerlessMicroservice.API.Helpers;
 using ServerlessMicroservice.API.Utilities;
@@ -20,7 +22,7 @@ using ServerlessMicroservice.Infrastructure.Services;
 namespace ServerlessMicroservice.API
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class Startup
     {
@@ -30,7 +32,7 @@ namespace ServerlessMicroservice.API
         private readonly ILoggerFactory _loggerFactory;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="environment"></param>
         /// <param name="configuration"></param>
@@ -56,7 +58,7 @@ namespace ServerlessMicroservice.API
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
@@ -101,7 +103,33 @@ namespace ServerlessMicroservice.API
             services.AddTransient<IActivityService, ActivityService>();
             services.AddTransient<IActivityRepository, ActivityMsSqlRepository>();
 
+            // referrences
+            // https://www.hanselman.com/blog/ASPNETCoreRESTfulWebAPIVersioningMadeEasy.aspx
+            // https://dzone.com/articles/api-versioning-in-net-core
+            // https://koukia.ca/api-versioning-in-asp-net-core-2-0-1b55970aa29d
+            // https://neelbhatt.com/2018/04/21/api-versioning-in-net-core/
+            // https://dotnetcoretutorials.com/2017/01/17/api-versioning-asp-net-core/
+            services.AddApiVersioning(optionVersioning =>
+            {
+                optionVersioning.ReportApiVersions = true;
+                optionVersioning.AssumeDefaultVersionWhenUnspecified = true;
+                optionVersioning.DefaultApiVersion = new ApiVersion(1, 0);
 
+                //We can allow clients to request a specific API version by media type.
+                //This option can be enabled by adding below line in the API versioning options in the ConfigureService method:
+                optionVersioning.ApiVersionReader = new MediaTypeApiVersionReader();
+
+                // Uncomment this line to enable only the api version header
+                //Once you enable this, Query string approach would not work.
+                //optionVersioning.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
+
+                // Doesnt need to redeclare the ApiVersion attribute on each controller name
+                optionVersioning.Conventions.Controller<V1Controller>().HasApiVersion(new ApiVersion(1, 0));
+                optionVersioning.Conventions.Controller<ActivityController>().HasApiVersion(new ApiVersion(2, 0));
+
+
+                // use [MapToApiVersion("1.0")] after httpget/httppost in the controller for mapping specific method
+            });
             // <c>nameof<c> operator. This assumes that the the section in the JSON file matches the name of the class object representing it.
             // Additionally, it serves as a reason to keep the names matching
             // @url: https://davidpine.net/blog/asp-net-core-configuration/
@@ -111,7 +139,7 @@ namespace ServerlessMicroservice.API
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
@@ -140,7 +168,7 @@ namespace ServerlessMicroservice.API
             //@todo: visit the other custom microservice develop at ms00003 and ms00004 to check if this method is working
             //</summary>
             //app.ConfigureCustomExceptionMiddleware();
-
+            app.UseStaticFiles();
             app.UseSwagger(SwaggerHelper.ConfigureSwagger);
             app.UseSwaggerUI(SwaggerHelper.ConfigureSwaggerUI);
 

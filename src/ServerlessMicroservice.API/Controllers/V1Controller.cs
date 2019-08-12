@@ -10,8 +10,12 @@ namespace ServerlessMicroservice.API.Controllers
     /// <summary>
     ///
     /// </summary>
-    [Route("api/v1/[controller]")]
+
+    [Produces("application/json")]
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     [ApiController]
+    [Route("api/v{version:Apiversion}/[controller]")]
     public abstract class V1Controller : ControllerBase
     {
     }

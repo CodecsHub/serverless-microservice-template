@@ -32,7 +32,8 @@
           "NWebsec.AspNetCore.Middleware": "2.0.0",
           "ServerlessMicroservice.Domain": "1.0.0",
           "ServerlessMicroservice.Infrastructure": "1.0.0",
-          "Swashbuckle.AspNetCore": "4.0.1"
+          "Swashbuckle.AspNetCore": "4.0.1",
+          "Swashbuckle.AspNetCore.Swagger": "4.0.1"
         },
         "runtime": {
           "ServerlessMicroservice.API.dll": {}
