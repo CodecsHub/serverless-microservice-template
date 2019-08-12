@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -13,12 +14,12 @@ using Serilog.Events;
 namespace ServerlessMicroservice.API
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class Program
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
@@ -28,16 +29,19 @@ namespace ServerlessMicroservice.API
         .Build();
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(Configuration)
-                .MinimumLevel.Debug()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                .WriteTo.ApplicationInsights("sdafsadfasdf")
+                .Enrich.WithProperty("App Name", "Serilog Web App Sample")
+                    //  .MinimumLevel.Debug()
+                    //  .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                    //  .WriteTo.ApplicationInsights("sdafsadfasdf")
+                // .WriteTo
+                //    .ApplicationInsights(TelemetryConfiguration.Active, TelemetryConverter.Traces)
                 .CreateLogger();
 
             try
@@ -57,7 +61,7 @@ namespace ServerlessMicroservice.API
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
@@ -66,6 +70,7 @@ namespace ServerlessMicroservice.API
                    .UseStartup<Startup>()
                    .UseConfiguration(Configuration)
                    .UseSerilog()
+                   .UseKestrel()
                    .Build();
 
     }

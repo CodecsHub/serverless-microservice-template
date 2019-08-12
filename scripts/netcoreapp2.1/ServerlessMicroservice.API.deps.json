@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "484329961d392856643e4a32e359339583a37dda"
+    "signature": "b56473c39046d8792d0130d5b4ca5ff6fa6f487c"
   },
   "compilationOptions": {
     "defines": [
@@ -33,6 +33,7 @@
           "Serilog.AspNetCore": "2.1.1",
           "Serilog.Settings.Configuration": "3.1.0",
           "Serilog.Sinks.ApplicationInsights": "3.0.4",
+          "Serilog.Sinks.Console": "3.1.1",
           "Serilog.Sinks.MSSqlServer": "5.1.2",
           "ServerlessMicroservice.Domain": "1.0.0",
           "ServerlessMicroservice.Infrastructure": "1.0.0",
@@ -552,6 +553,23 @@
         },
         "compile": {
           "lib/netstandard2.0/Serilog.Sinks.ApplicationInsights.dll": {}
+        }
+      },
+      "Serilog.Sinks.Console/3.1.1": {
+        "dependencies": {
+          "Serilog": "2.8.0",
+          "System.Console": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.3.0"
+        },
+        "runtime": {
+          "lib/netcoreapp1.1/Serilog.Sinks.Console.dll": {
+            "assemblyVersion": "3.1.1.0",
+            "fileVersion": "3.1.1.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp1.1/Serilog.Sinks.Console.dll": {}
         }
       },
       "Serilog.Sinks.MSSqlServer/5.1.2": {
@@ -4060,6 +4078,13 @@
       "sha512": "sha512-nspLybjDq6ALWXW+GNEEtZJkk99N3rZKMbA2BuNfCg62uvvrMSDA3Nx8T8eiB8BhyxT0NR9EBa0r0LV1MYxKow==",
       "path": "serilog.sinks.applicationinsights/3.0.4",
       "hashPath": "serilog.sinks.applicationinsights.3.0.4.nupkg.sha512"
+    },
+    "Serilog.Sinks.Console/3.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-56mI5AqvyF/i/c2451nvV71kq370XOCE4Uu5qiaJ295sOhMb9q3BWwG7mWLOVSnmpWiq0SBT3SXfgRXGNP6vzA==",
+      "path": "serilog.sinks.console/3.1.1",
+      "hashPath": "serilog.sinks.console.3.1.1.nupkg.sha512"
     },
     "Serilog.Sinks.MSSqlServer/5.1.2": {
       "type": "package",

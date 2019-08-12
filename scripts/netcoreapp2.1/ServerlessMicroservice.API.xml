@@ -225,22 +225,27 @@
             <param name="context"></param>
         </member>
         <member name="T:ServerlessMicroservice.API.Program">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.Program.Configuration">
+             <summary>
+            
+             </summary>
         </member>
         <member name="M:ServerlessMicroservice.API.Program.Main(System.String[])">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="args"></param>
+             </summary>
+             <param name="args"></param>
         </member>
-        <member name="M:ServerlessMicroservice.API.Program.CreateWebHostBuilder(System.String[])">
-            <summary>
+        <member name="M:ServerlessMicroservice.API.Program.BuildWebHost(System.String[])">
+             <summary>
             
-            </summary>
-            <param name="args"></param>
-            <returns></returns>
+             </summary>
+             <param name="args"></param>
+             <returns></returns>
         </member>
         <member name="T:ServerlessMicroservice.API.Startup">
              <summary>
