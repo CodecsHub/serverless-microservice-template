@@ -33,6 +33,7 @@ namespace ServerlessMicroservice.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [ResponseCache(Duration = 1800)]
         [HttpGet("{id:long}")]
         [ProducesResponseType(typeof(ActivityResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -62,6 +63,7 @@ namespace ServerlessMicroservice.API.Controllers
         ///
         /// </summary>
         /// <returns></returns>
+        [ResponseCache(Duration = 1800)]
         [HttpGet]
         [ProducesResponseType(typeof(ActivityResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -71,6 +71,7 @@ namespace ServerlessMicroservice.API
                 }
             });
 
+            services.AddResponseCaching();
             services.AddMvc(config =>
             {
                 config.RespectBrowserAcceptHeader = true;
@@ -167,6 +168,7 @@ namespace ServerlessMicroservice.API
 
             // force the request to use https traffic
             app.UseHttpsRedirection();
+            app.UseResponseCaching();
             app.UseMvc();
 
         }
