@@ -6,6 +6,7 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace ServerlessMicroservice.API.Helpers
@@ -21,6 +22,8 @@ namespace ServerlessMicroservice.API.Helpers
         /// <param name="swaggerGenOptions"></param>
         public static void ConfigureSwaggerGen(SwaggerGenOptions swaggerGenOptions)
         {
+      
+
             swaggerGenOptions.SwaggerDoc($"v1",
     new Info
     {
