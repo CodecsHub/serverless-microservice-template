@@ -71,28 +71,31 @@ namespace ServerlessMicroservice.API
                 }
             });
 
-            services.AddResponseCaching();
-            services.AddMvc(config =>
-            {
-                config.RespectBrowserAcceptHeader = true;
-                config.ReturnHttpNotAcceptable = true;
+            services
+                .AddResponseCaching()
+                .AddDistributedMemoryCache()
+                .AddMvc(config =>
+                    {
+                        config.RespectBrowserAcceptHeader = true;
+                        config.ReturnHttpNotAcceptable = true;
 
-                // basd on tutorial can be used but in the intelense it will deprecated
-                //config.InputFormatters.Add(new XmlSerializerInputFormatter());
-                //config.OutputFormatters.Add(new XmlSerializerOutputFormatter());
-                // config.OutputFormatters.Add(new JsonInputFormatter());
-                //@todo: extend the content negation
-                //@referrence: https://code-maze.com/content-negotiation-dotnet-core/
-            })
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                        // basd on tutorial can be used but in the intelense it will deprecated
+                        //config.InputFormatters.Add(new XmlSerializerInputFormatter());
+                        //config.OutputFormatters.Add(new XmlSerializerOutputFormatter());
+                        // config.OutputFormatters.Add(new JsonInputFormatter());
+                        //@todo: extend the content negation
+                        //@referrence: https://code-maze.com/content-negotiation-dotnet-core/
+                    })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
 
             services.AddSwaggerGen(SwaggerHelper.ConfigureSwaggerGen);
 
 
             // Add application services.
-            services.AddTransient<IActivityService, ActivityService>();
-            services.AddTransient<IActivityRepository, ActivityMsSqlRepository>();
+            services
+                .AddTransient<IActivityService, ActivityService>()
+                .AddTransient<IActivityRepository, ActivityMsSqlRepository>();
 
             // referrences
             // https://www.hanselman.com/blog/ASPNETCoreRESTfulWebAPIVersioningMadeEasy.aspx

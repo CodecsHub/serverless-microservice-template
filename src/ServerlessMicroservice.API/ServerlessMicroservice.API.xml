@@ -35,14 +35,6 @@
              <param name="activityRequest"></param>
              <returns></returns>
         </member>
-        <member name="M:ServerlessMicroservice.API.Controllers.ActivityController.GetPropertyValue(System.Object,System.String)">
-             <summary>
-            
-             </summary>
-             <param name="obj"></param>
-             <param name="propertyName"></param>
-             <returns></returns>
-        </member>
         <member name="T:ServerlessMicroservice.API.Controllers.V1Controller">
              <summary>
             

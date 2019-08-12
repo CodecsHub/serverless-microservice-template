@@ -8,6 +8,8 @@ using ServerlessMicroservice.Domain.Entities;
 using ServerlessMicroservice.Domain.Contracts;
 using ServerlessMicroservice.Infrastructure.Interfaces;
 using System.Net;
+using Microsoft.Extensions.Caching.Distributed;
+using ServerlessMicroservice.API.Helpers;
 
 namespace ServerlessMicroservice.API.Controllers
 {
@@ -18,7 +20,7 @@ namespace ServerlessMicroservice.API.Controllers
     public class ActivityController : V1Controller
     {
         private readonly IActivityService _activityService;
-
+        private readonly IDistributedCache _distributedCache;
         /// <summary>
         ///
         /// </summary>
@@ -41,31 +43,46 @@ namespace ServerlessMicroservice.API.Controllers
         public async Task<IActionResult> Get(long id)
         {
 
-            //try
+            ////try
+            ////{
+            //ActivityResponse activity = null;
+            //var cacheKey = $"User_{id}";
+
+
+            //// Get the requested ETag
+            //string requestETag = "";
+            //    if (Request.Headers.ContainsKey("If-None-Match"))
+            //    {
+            //        requestETag = Request.Headers["If-None-Match"].First();
+
+            //    }
+
+
+
+            //    var userBytes = await _distributedCache.GetAsync(cacheKey);
+
+
+            //if (userBytes == null)
             //{
-               // Activity activity = null;
+            //     activity = await _activityService.GetByIdAsync(id);
+            //    userBytes = CacheHelper.Serialize(activity);
+            //    await _distributedCache.SetAsync(
+            //        cacheKey,
+            //        userBytes,
+            //        new DistributedCacheEntryOptions { SlidingExpiration = TimeSpan.FromMinutes(5) });
+            //}
 
-                // Get the requested ETag
-                string requestETag = "";
-                if (Request.Headers.ContainsKey("If-None-Match"))
-                {
-                    requestETag = Request.Headers["If-None-Match"].First();
+            //activity = CacheHelper.Deserialize<Activity>(userBytes);
 
-                }
-
-
-
-
-                var output = await _activityService.GetByIdAsync(id);
-
-                // If no contact was found, then return a 404
-                if (output == null)
+            var output = await _activityService.GetByIdAsync(id);
+            // If no contact was found, then return a 404
+            if (output == null)
                 {
                     return NoContent();
                 }
                 //string test = output.Data.
                 // Construct the new ETag
-              // var responseETag = 
+              // var responseETag =
 
                 // Return a 304 if the ETag of the current record matches the ETag in the "If-None-Match" HTTP header
                // if (Request.Headers.ContainsKey("If-None-Match") && responseETag == requestETag)
