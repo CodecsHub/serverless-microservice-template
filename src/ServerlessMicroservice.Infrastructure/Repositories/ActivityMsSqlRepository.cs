@@ -19,7 +19,7 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
             internal static string GetById = "SELECT Id,UserId,ActionId,ApplicationUrl FROM Activity WHERE Id = @id";
 
             internal static string Add = "EXEC V1Activity_Post @UserId, @ApplicationId, @ActionId" +
-                     ", @ApplicationUrl, @ActivityRemarks, @DateTimeLog";
+                     ", @ApplicationUrl, @ActivityRemarks, @DateCreated";
 
             internal static string Edit = "SELECT Id,UserId,ActionId,ApplicationUrl FROM Activity WHERE Id = @id";
 
@@ -78,7 +78,7 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
 
 
 
-                await dbConnection.ExecuteAsync(SqlQueries.Add, model)
+                await dbConnection.QueryAsync(SqlQueries.Add, model)
                    .ConfigureAwait(false);
                 //var output = await dbConnection.QueryAsync<Activity>(query, activity);
 

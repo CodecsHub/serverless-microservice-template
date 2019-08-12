@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace ServerlessMicroservice.API.Helpers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ValidationFilterAttribute : IActionFilter
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public void OnActionExecuting(ActionExecutingContext context)
         {
             if (!context.ModelState.IsValid)
@@ -18,6 +25,10 @@ namespace ServerlessMicroservice.API.Helpers
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public void OnActionExecuted(ActionExecutedContext context)
         {
         }

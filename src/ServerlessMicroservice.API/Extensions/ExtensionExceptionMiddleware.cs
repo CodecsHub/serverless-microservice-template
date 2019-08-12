@@ -11,8 +11,15 @@ namespace ServerlessMicroservice.API.Extensions
     // @title:  Custom Global Error Trapping
     // @see: <root> startup.cs
     //</summary>
+    /// <summary>
+    /// 
+    /// </summary>
     public static class ExtensionExceptionMiddleware
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="app"></param>
         public static void ConfigureCustomExceptionMiddleware(this IApplicationBuilder app)
         {
             app.UseMiddleware<ExceptionMiddleware>();

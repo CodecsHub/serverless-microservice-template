@@ -11,35 +11,57 @@ using ServerlessMicroservice.Infrastructure.Interfaces;
 namespace ServerlessMicroservice.API.Controllers
 {
 
-
+    /// <summary>
+    ///
+    /// </summary>
     public class ActivityController : V1Controller
     {
         private readonly IActivityService _activityService;
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="activityService"></param>
         public ActivityController(IActivityService activityService)
         {
             _activityService = activityService;
         }
 
         // GET api/v1/products/{id}
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id:long}")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(404)]
+        [ProducesResponseType(typeof(ActivityResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Get(long id)
         {
 
-
+            try
+            {
                 var output = await _activityService.GetByIdAsync(id);
 
-
+                if (output == null)
+                {
+                    return NoContent();
+                }
 
 
                 return Ok(output);
-
-
-        }
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+         }
 
         // GET api/v1/products
+        /// <summary>
+        ///
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(typeof(ActivityResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -51,7 +73,7 @@ namespace ServerlessMicroservice.API.Controllers
 
                 if (output == null)
                 {
-                    return NotFound();
+                    return NoContent();
                 }
 
 
@@ -65,6 +87,11 @@ namespace ServerlessMicroservice.API.Controllers
         }
 
         // POST api/v1/products
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="activityRequest"></param>
+        /// <returns></returns>
         [HttpPost]
         //[ProducesResponseType(201, Type = typeof(Activity))]
         [ProducesResponseType(typeof(ActivityResponse), StatusCodes.Status201Created)]

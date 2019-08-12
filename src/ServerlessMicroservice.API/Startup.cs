@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using ServerlessMicroservice.API.Extensions;
+using ServerlessMicroservice.API.Helpers;
 using ServerlessMicroservice.API.Utilities;
 using ServerlessMicroservice.Domain.Interfaces;
 using ServerlessMicroservice.Infrastructure.Interfaces;
@@ -18,6 +19,9 @@ using ServerlessMicroservice.Infrastructure.Services;
 
 namespace ServerlessMicroservice.API
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Startup
     {
         //@referrence: https://exceptionnotfound.net/using-dapper-asynchronously-in-asp-net-core-2-1/
@@ -25,6 +29,12 @@ namespace ServerlessMicroservice.API
         private readonly IConfiguration _configuration;
         private readonly ILoggerFactory _loggerFactory;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="environment"></param>
+        /// <param name="configuration"></param>
+        /// <param name="loggerFactory"></param>
         public Startup(IHostingEnvironment environment, IConfiguration configuration, ILoggerFactory loggerFactory)
         {
             _environment = environment;
@@ -45,6 +55,10 @@ namespace ServerlessMicroservice.API
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             // @description: control the dependecy in the logger or else it will slow down the application
@@ -79,6 +93,10 @@ namespace ServerlessMicroservice.API
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+
+            services.AddSwaggerGen(SwaggerHelper.ConfigureSwaggerGen);
+
+
             // Add application services.
             services.AddTransient<IActivityService, ActivityService>();
             services.AddTransient<IActivityRepository, ActivityMsSqlRepository>();
@@ -92,6 +110,11 @@ namespace ServerlessMicroservice.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -114,8 +137,12 @@ namespace ServerlessMicroservice.API
             // @see: Herlper/ExceptionMiddleware.cs
             // @see: Model/UtitlityErrorDetails.cs
             // @url: https://jack-vanlightly.com/blog/2017/8/23/api-series-part-2-swagger
+            //@todo: visit the other custom microservice develop at ms00003 and ms00004 to check if this method is working
             //</summary>
-            app.ConfigureCustomExceptionMiddleware();
+            //app.ConfigureCustomExceptionMiddleware();
+
+            app.UseSwagger(SwaggerHelper.ConfigureSwagger);
+            app.UseSwaggerUI(SwaggerHelper.ConfigureSwaggerUI);
 
             // force the request to use https traffic
             app.UseHttpsRedirection();

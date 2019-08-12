@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ServerlessMicroservice.API</name>
+    </assembly>
+    <members>
+        <member name="T:ServerlessMicroservice.API.Controllers.ActivityController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Controllers.ActivityController.#ctor(ServerlessMicroservice.Infrastructure.Interfaces.IActivityService)">
+             <summary>
+            
+             </summary>
+             <param name="activityService"></param>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Controllers.ActivityController.Get(System.Int64)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <returns></returns>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Controllers.ActivityController.Get">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Controllers.ActivityController.Post(ServerlessMicroservice.Domain.Contracts.ActivityRequest)">
+             <summary>
+            
+             </summary>
+             <param name="activityRequest"></param>
+             <returns></returns>
+        </member>
+        <member name="T:ServerlessMicroservice.API.Controllers.V1Controller">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:ServerlessMicroservice.API.DTOs.ActivityDTO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.DTOs.ActivityDTO.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.DTOs.ActivityDTO.UserId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.DTOs.ActivityDTO.ApplicationId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.DTOs.ActivityDTO.ActionId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.DTOs.ActivityDTO.ApplicationUrl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.DTOs.ActivityDTO.ActivityRemarks">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.DTOs.ActivityDTO.RowVersionNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.DTOs.ActivityDTO.DateTimeLog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.DTOs.ActivityDTO.DateCreated">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.DTOs.ActivityDTO.DateUpdated">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ServerlessMicroservice.API.DTOs.ActivityDTO.FromActivity(ServerlessMicroservice.Domain.Entities.Activity)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ServerlessMicroservice.API.Extensions.ExtensionExceptionMiddleware">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Extensions.ExtensionExceptionMiddleware.ConfigureCustomExceptionMiddleware(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+        </member>
+        <member name="T:ServerlessMicroservice.API.Helpers.ExceptionMiddleware">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Helpers.ExceptionMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILoggerFactory)">
+             <summary>
+            
+             </summary>
+             <param name="next"></param>
+             <param name="logger"></param>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Helpers.ExceptionMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+             <summary>
+            
+             </summary>
+             <param name="httpContext"></param>
+             <returns></returns>
+        </member>
+        <member name="T:ServerlessMicroservice.API.Helpers.SwaggerHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Helpers.SwaggerHelper.ConfigureSwaggerGen(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <summary>
+            
+            </summary>
+            <param name="swaggerGenOptions"></param>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Helpers.SwaggerHelper.ConfigureSwagger(Swashbuckle.AspNetCore.Swagger.SwaggerOptions)">
+            <summary>
+            
+            </summary>
+            <param name="swaggerOptions"></param>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Helpers.SwaggerHelper.ConfigureSwaggerUI(Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIOptions)">
+            <summary>
+            
+            
+            </summary>
+            <param name="swaggerUIOptions"></param>
+        </member>
+        <member name="T:ServerlessMicroservice.API.Helpers.ValidationFilterAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Helpers.ValidationFilterAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Helpers.ValidationFilterAttribute.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:ServerlessMicroservice.API.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ServerlessMicroservice.API.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Startup.#ctor(Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            
+            </summary>
+            <param name="environment"></param>
+            <param name="configuration"></param>
+            <param name="loggerFactory"></param>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="T:ServerlessMicroservice.API.Utilities.ApplicationInformation">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.Utilities.ApplicationInformation.ApplicationName">
+            <summary>
+            Details of the application itself
+            </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.Utilities.ApplicationInformation.ApplicationDescription">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.Utilities.ApplicationInformation.ReleaseNumber">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.Utilities.ApplicationInformation.VersionMajor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.Utilities.ApplicationInformation.VersionMinor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.Utilities.ApplicationInformation.VersionPatch">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.Utilities.ApplicationInformation.DateCreated">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.Utilities.ApplicationInformation.DateUpdated">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.Utilities.ApplicationInformation.VersionNumber">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:ServerlessMicroservice.API.Utilities.ConnectionStrings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.Utilities.ConnectionStrings.DatabaseConnectionRead">
+             <summary>
+             The Primary or main connection string intended  for read, write and read/write
+             </summary>
+            
+        </member>
+        <member name="P:ServerlessMicroservice.API.Utilities.ConnectionStrings.DatabaseConnectionWrite">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ServerlessMicroservice.API.Utilities.ConnectionStrings.DatabaseConnectionReadWrite">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

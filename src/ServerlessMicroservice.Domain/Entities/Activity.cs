@@ -8,6 +8,10 @@ namespace ServerlessMicroservice.Domain.Entities
     public class Activity : BaseEntity
     {
         // @todo: convert from list to hashset for better performance
+        ///
+        /// ## Description - Remarks ##
+        /// Short description about the API
+        ///
         public int ApplicationId { get; set; }
         public int ActionId { get; set; }
         public string ApplicationUrl { get; set; }

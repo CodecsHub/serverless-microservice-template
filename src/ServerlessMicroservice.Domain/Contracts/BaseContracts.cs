@@ -2,7 +2,7 @@
 
 namespace ServerlessMicroservice.Domain.Contracts
 {
-    public partial class BaseContracts
+    public  class BaseContracts
     {
         public DateTime Log { get; protected set; } = DateTime.UtcNow;
 
