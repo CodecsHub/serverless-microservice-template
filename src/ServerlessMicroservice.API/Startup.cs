@@ -168,6 +168,9 @@ namespace ServerlessMicroservice.API
             //@todo: visit the other custom microservice develop at ms00003 and ms00004 to check if this method is working
             //</summary>
             //app.ConfigureCustomExceptionMiddleware();
+            app.UseMiddleware<StackifyMiddleware.RequestTracerMiddleware>();
+
+            app.UseMiddleware<SerilogRequestLogger>()
             app.UseStaticFiles();
             app.UseSwagger(SwaggerHelper.ConfigureSwagger);
             app.UseSwaggerUI(SwaggerHelper.ConfigureSwaggerUI);
