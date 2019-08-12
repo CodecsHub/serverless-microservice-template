@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "d7c89c44ddc2287509158d011b9a0974b2e2c06c"
+    "signature": "16d8aec84b2e45a0e37b7401350e07bac1f04044"
   },
   "compilationOptions": {
     "defines": [
@@ -31,6 +31,7 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.9",
           "NWebsec.AspNetCore.Middleware": "2.0.0",
           "Serilog.AspNetCore": "2.1.1",
+          "Serilog.Settings.Configuration": "3.1.0",
           "ServerlessMicroservice.Domain": "1.0.0",
           "ServerlessMicroservice.Infrastructure": "1.0.0",
           "StackifyMiddleware": "3.0.4.1",
@@ -458,7 +459,7 @@
           "lib/netstandard2.0/NWebsec.AspNetCore.Middleware.dll": {}
         }
       },
-      "Serilog/2.5.0": {
+      "Serilog/2.6.0": {
         "dependencies": {
           "Microsoft.CSharp": "4.5.0",
           "System.Collections": "4.3.0",
@@ -476,7 +477,7 @@
         "runtime": {
           "lib/netstandard1.3/Serilog.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.5.0.0"
+            "fileVersion": "2.6.0.0"
           }
         },
         "compile": {
@@ -488,7 +489,7 @@
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.1.1",
           "Microsoft.Extensions.DependencyInjection": "2.1.1",
           "Microsoft.Extensions.Logging": "2.1.1",
-          "Serilog": "2.5.0",
+          "Serilog": "2.6.0",
           "Serilog.Extensions.Logging": "2.0.0"
         },
         "runtime": {
@@ -504,7 +505,7 @@
       "Serilog.Extensions.Logging/2.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Logging": "2.1.1",
-          "Serilog": "2.5.0"
+          "Serilog": "2.6.0"
         },
         "runtime": {
           "lib/netstandard2.0/Serilog.Extensions.Logging.dll": {
@@ -514,6 +515,22 @@
         },
         "compile": {
           "lib/netstandard2.0/Serilog.Extensions.Logging.dll": {}
+        }
+      },
+      "Serilog.Settings.Configuration/3.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyModel": "2.1.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.1",
+          "Serilog": "2.6.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Serilog.Settings.Configuration.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Serilog.Settings.Configuration.dll": {}
         }
       },
       "StackifyMiddleware/3.0.4.1": {
@@ -3911,12 +3928,12 @@
       "path": "nwebsec.aspnetcore.middleware/2.0.0",
       "hashPath": "nwebsec.aspnetcore.middleware.2.0.0.nupkg.sha512"
     },
-    "Serilog/2.5.0": {
+    "Serilog/2.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-JwwkgNYNFKT4kQZ3qBV3VqPgchUg1A6FnlFa9hgyanylwBhJ7eTFl3pgLVxijFEb+oHLImRcMaTsMzBt2AG0aQ==",
-      "path": "serilog/2.5.0",
-      "hashPath": "serilog.2.5.0.nupkg.sha512"
+      "sha512": "sha512-hxHgHkza8ZowrvQ+jTEF2ypDWGP8NbNtxPQIx7ogTAM9fisDFo2+6kOaxCkleZLO8hiyq0kW5tDLkgm/dbj9uA==",
+      "path": "serilog/2.6.0",
+      "hashPath": "serilog.2.6.0.nupkg.sha512"
     },
     "Serilog.AspNetCore/2.1.1": {
       "type": "package",
@@ -3931,6 +3948,13 @@
       "sha512": "sha512-JAh1vHmbiwDAjA9VmUQjAXvlGm+vDv8usarajlkx7Arm6Zai+CPY4naE4N9M3Eh520wY5GmIWpM+7zmfMbdTOw==",
       "path": "serilog.extensions.logging/2.0.0",
       "hashPath": "serilog.extensions.logging.2.0.0.nupkg.sha512"
+    },
+    "Serilog.Settings.Configuration/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BS+G1dhThTHBOYm8R21JNlR+Nh7ETAOlJuL1P6te1rOG98eV1vos5EyWRTGr0AbHgySxsGu1Q/evfFxS9+Gk1Q==",
+      "path": "serilog.settings.configuration/3.1.0",
+      "hashPath": "serilog.settings.configuration.3.1.0.nupkg.sha512"
     },
     "StackifyMiddleware/3.0.4.1": {
       "type": "package",
