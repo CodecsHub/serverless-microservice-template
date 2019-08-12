@@ -43,17 +43,7 @@ namespace ServerlessMicroservice.API
             _configuration = configuration;
             _loggerFactory = loggerFactory;
 
-            var builder = new ConfigurationBuilder()
-                        .SetBasePath(_environment.ContentRootPath)
-                        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                        .AddJsonFile($"appsettings.{_environment.EnvironmentName}.json", optional: true)
-                        .AddEnvironmentVariables();
-                //if (_environment.IsDevelopment())
-                //{
-                //    builder.AddUserSecrets<Startup>();
-                //}
 
-            _configuration = builder.Build();
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
