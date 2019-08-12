@@ -170,7 +170,7 @@ namespace ServerlessMicroservice.API
             //app.ConfigureCustomExceptionMiddleware();
             app.UseMiddleware<StackifyMiddleware.RequestTracerMiddleware>();
 
-            app.UseMiddleware<SerilogRequestLogger>()
+            //app.UseMiddleware<SerilogRequestLogger>();
             app.UseStaticFiles();
             app.UseSwagger(SwaggerHelper.ConfigureSwagger);
             app.UseSwaggerUI(SwaggerHelper.ConfigureSwaggerUI);
