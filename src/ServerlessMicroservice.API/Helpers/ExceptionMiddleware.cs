@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using ServerlessMicroservice.Domain.Contracts;
+using ServerlessMicroservice.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,18 +54,37 @@ namespace ServerlessMicroservice.API.Helpers
             }
         }
 
-        private static Task HandleExceptionAsync(HttpContext context, Exception exception)
+        private async Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
+            var response = context.Response;
+            var customException = exception as BaseCustomException;
+            var statusCode = (int)HttpStatusCode.InternalServerError;
+            var message = "Unexpected error";
+            var description = "Unexpected error";
 
-            context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-
-            return context.Response.WriteAsync(new BaseContracts()
+            if (null != customException)
             {
-                Code = context.Response.StatusCode,
-                //Message = "Internal Server Error from the custom middleware."
-                Message = exception.Message
-            }.ToString());
+                message = customException.Message;
+                description = customException.Description;
+                statusCode = customException.Code;
+            }
+
+            response.ContentType = "application/json";
+            response.StatusCode = statusCode;
+            await response.WriteAsync(JsonConvert.SerializeObject(new BaseContracts
+            {
+                Message = message,
+                Description = description
+            }));
+            //context.Response.ContentType = "application/json";
+            //context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+            //return context.Response.WriteAsync(new BaseContracts()
+            //{
+            //    Code = context.Response.StatusCode,
+            //    //Message = "Internal Server Error from the custom middleware."
+            //    Message = exception.Message
+            //}.ToString());
         }
     }
 }
