@@ -78,11 +78,11 @@ namespace ServerlessMicroservice.Infrastructure.Repositories
 
 
 
-                await dbConnection.QueryAsync(SqlQueries.Add, model)
+                var output  = await dbConnection.QuerySingleOrDefaultAsync(SqlQueries.Add, model)
                    .ConfigureAwait(false);
                 //var output = await dbConnection.QueryAsync<Activity>(query, activity);
 
-                return model;
+                return output;
             }
         }
 

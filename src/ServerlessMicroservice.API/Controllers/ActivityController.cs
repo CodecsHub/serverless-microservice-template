@@ -14,7 +14,7 @@
     public class ActivityController : V1Controller
     {
         private readonly IActivityService _activityService;
-        private readonly IDistributedCache _distributedCache;
+        //private readonly IDistributedCache _distributedCache;
         /// <summary>
         /// Initializes a new instance of the <see cref="ActivityController"/> class.
         /// dummy test

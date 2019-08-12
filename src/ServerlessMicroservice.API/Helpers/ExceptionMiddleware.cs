@@ -59,8 +59,8 @@ namespace ServerlessMicroservice.API.Helpers
             var response = context.Response;
             var customException = exception as BaseCustomException;
             var statusCode = (int)HttpStatusCode.InternalServerError;
-            var message = "Unexpected error";
-            var description = "Unexpected error";
+            var message = exception.Message;
+            var description = "Something is wrong";
 
             if (null != customException)
             {
@@ -73,18 +73,10 @@ namespace ServerlessMicroservice.API.Helpers
             response.StatusCode = statusCode;
             await response.WriteAsync(JsonConvert.SerializeObject(new BaseContracts
             {
-                Message = message,
+                Message = exception.Message,
                 Description = description
             }));
-            //context.Response.ContentType = "application/json";
-            //context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-
-            //return context.Response.WriteAsync(new BaseContracts()
-            //{
-            //    Code = context.Response.StatusCode,
-            //    //Message = "Internal Server Error from the custom middleware."
-            //    Message = exception.Message
-            //}.ToString());
+           
         }
     }
 }
