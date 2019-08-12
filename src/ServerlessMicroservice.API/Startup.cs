@@ -24,6 +24,7 @@ namespace ServerlessMicroservice.API
     /// <summary>
     ///
     /// </summary>
+    /// // @todo wil install StyleCop.Analyzersfor style formatting
     public class Startup
     {
         //@referrence: https://exceptionnotfound.net/using-dapper-asynchronously-in-asp-net-core-2-1/

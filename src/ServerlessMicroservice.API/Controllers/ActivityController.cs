@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using ServerlessMicroservice.Domain.Entities;
-using ServerlessMicroservice.Domain.Contracts;
-using ServerlessMicroservice.Infrastructure.Interfaces;
-using System.Net;
-using Microsoft.Extensions.Caching.Distributed;
-using ServerlessMicroservice.API.Helpers;
-
-namespace ServerlessMicroservice.API.Controllers
+﻿namespace ServerlessMicroservice.API.Controllers
 {
+    using System;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Caching.Distributed;
+    using ServerlessMicroservice.Domain.Contracts;
+    using ServerlessMicroservice.Infrastructure.Interfaces;
 
     /// <summary>
     ///
@@ -22,13 +16,11 @@ namespace ServerlessMicroservice.API.Controllers
         private readonly IActivityService _activityService;
         private readonly IDistributedCache _distributedCache;
         /// <summary>
-        ///
+        /// Initializes a new instance of the <see cref="ActivityController"/> class.
+        /// dummy test
         /// </summary>
         /// <param name="activityService"></param>
-        public ActivityController(IActivityService activityService)
-        {
-            _activityService = activityService;
-        }
+        public ActivityController(IActivityService activityService) => this._activityService = activityService;
 
         // GET api/v1/products/{id}
         /// <summary>

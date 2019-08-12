@@ -10,10 +10,11 @@
              </summary>
         </member>
         <member name="M:ServerlessMicroservice.API.Controllers.ActivityController.#ctor(ServerlessMicroservice.Infrastructure.Interfaces.IActivityService)">
-             <summary>
-            
-             </summary>
-             <param name="activityService"></param>
+            <summary>
+            Initializes a new instance of the <see cref="T:ServerlessMicroservice.API.Controllers.ActivityController"/> class.
+            dummy test
+            </summary>
+            <param name="activityService"></param>
         </member>
         <member name="M:ServerlessMicroservice.API.Controllers.ActivityController.Get(System.Int64)">
              <summary>
@@ -157,6 +158,26 @@
              <param name="operation"></param>
              <param name="context"></param>
         </member>
+        <member name="T:ServerlessMicroservice.API.Helpers.CacheHelper">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Helpers.CacheHelper.Deserialize``1(System.Byte[])">
+             <summary>
+            
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="param"></param>
+             <returns></returns>
+        </member>
+        <member name="M:ServerlessMicroservice.API.Helpers.CacheHelper.Serialize(System.Object)">
+             <summary>
+            
+             </summary>
+             <param name="obj"></param>
+             <returns></returns>
+        </member>
         <member name="T:ServerlessMicroservice.API.Helpers.ExceptionMiddleware">
              <summary>
             
@@ -251,6 +272,7 @@
              <summary>
             
              </summary>
+             // @todo wil install StyleCop.Analyzersfor style formatting
         </member>
         <member name="M:ServerlessMicroservice.API.Startup.#ctor(Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILoggerFactory)">
              <summary>
